@@ -46,6 +46,8 @@
             color: var(--neige);
             min-height: 100vh;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
         }
         
         /* Background animé */
@@ -76,23 +78,8 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
         }
         
-        /* Container principal */
-        .container {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            position: relative;
-        }
-        
         /* Header minimal */
         .header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
             padding: 1.5rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -107,6 +94,7 @@
             font-weight: 600;
             letter-spacing: -0.02em;
             color: var(--neige);
+            text-decoration: none;
         }
         
         .logo span {
@@ -123,6 +111,16 @@
             padding: 0.4rem 0.8rem;
             border: 1px solid rgba(201, 162, 39, 0.3);
             border-radius: 2rem;
+        }
+        
+        /* Container principal */
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
         }
         
         /* Contenu central */
@@ -185,7 +183,6 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
-            margin-bottom: 3rem;
             opacity: 0;
             animation: fadeInUp 0.8s var(--ease-out-expo) 0.8s forwards;
         }
@@ -240,7 +237,6 @@
         
         .profile-card:hover .profile-icon {
             transform: scale(1.1);
-            color: var(--or-clair);
         }
         
         .profile-card:hover .profile-arrow {
@@ -283,15 +279,21 @@
             transition: all 0.4s var(--ease-out-expo);
         }
         
+        /* Ligne décorative */
+        .deco-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--or-doux), transparent);
+            margin: 0 auto 2rem;
+            opacity: 0;
+            animation: fadeIn 1s var(--ease-out-expo) 0.65s forwards;
+        }
+        
         /* Footer */
         .footer {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
             padding: 1.5rem 2rem;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             font-size: 0.75rem;
             color: rgba(255, 255, 255, 0.4);
@@ -307,21 +309,6 @@
         
         .footer a:hover {
             color: var(--or-doux);
-        }
-        
-        .data-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .data-badge::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: #22c55e;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
         }
         
         /* Animations */
@@ -340,21 +327,6 @@
                 transform: translateY(0);
             }
         }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        /* Ligne décorative */
-        .deco-line {
-            width: 60px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--or-doux), transparent);
-            margin: 0 auto 2rem;
-            opacity: 0;
-            animation: fadeIn 1s var(--ease-out-expo) 0.65s forwards;
-        }
     </style>
 </head>
 <body>
@@ -362,7 +334,7 @@
     <div class="grain"></div>
     
     <header class="header">
-        <div class="logo">bnb<span>·</span>annecy</div>
+        <a href="index.html" class="logo">bnb<span>·</span>annecy</a>
         <div class="badge-2026">Données 2026</div>
     </header>
     
@@ -396,28 +368,28 @@
                     <p class="profile-desc">Je loue déjà, je veux optimiser</p>
                 </a>
                 
-                <a href="index.html?profil=investisseur" class="profile-card">
+                <a href="radar-biens.html" class="profile-card">
                     <span class="profile-icon">🎯</span>
                     <span class="profile-arrow">→</span>
                     <h3 class="profile-title">Investisseur</h3>
                     <p class="profile-desc">Je cherche un bien à acheter pour louer</p>
                 </a>
                 
-                <a href="index.html?profil=vendeur" class="profile-card">
+                <a href="valorisation-bnb.html" class="profile-card">
                     <span class="profile-icon">🔑</span>
                     <span class="profile-arrow">→</span>
                     <h3 class="profile-title">Vendeur</h3>
                     <p class="profile-desc">Je veux valoriser mon bien grâce au potentiel BNB</p>
                 </a>
                 
-                <a href="index.html?profil=indecis" class="profile-card">
+                <a href="que-faire-de-votre-bien.html" class="profile-card">
                     <span class="profile-icon">🤔</span>
                     <span class="profile-arrow">→</span>
                     <h3 class="profile-title">Héritier · Indécis</h3>
                     <p class="profile-desc">J'ai un bien, j'hésite sur quoi en faire</p>
                 </a>
                 
-                <a href="index.html?profil=pro" class="profile-card">
+                <a href="professionnels.html" class="profile-card">
                     <span class="profile-icon">💼</span>
                     <span class="profile-arrow">→</span>
                     <h3 class="profile-title">Professionnel</h3>
@@ -429,14 +401,13 @@
     
     <footer class="footer">
         <span>© 2026 BNB Annecy · Un projet <a href="https://leman-digital-asset.com" target="_blank">Leman Digital Asset</a></span>
-        <span class="data-badge">Données mises à jour mars 2026</span>
     </footer>
     
     <script>
         // Stocker le profil sélectionné
         document.querySelectorAll('.profile-card').forEach(card => {
             card.addEventListener('click', function(e) {
-                const url = new URL(this.href);
+                const url = new URL(this.href, window.location.origin);
                 const profil = url.searchParams.get('profil');
                 if (profil) {
                     localStorage.setItem('bnb_annecy_profil', profil);
