@@ -55,7 +55,6 @@
             --font-body: 'Inter', -apple-system, sans-serif;
             
             --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
         }
         
         * {
@@ -104,7 +103,6 @@
             font-weight: 600;
             color: var(--neige);
             text-decoration: none;
-            letter-spacing: -0.02em;
             transition: color 0.3s;
         }
         
@@ -139,9 +137,7 @@
         }
         
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
+            .nav-links { display: none; }
         }
         
         /* ==================== HERO ==================== */
@@ -207,19 +203,13 @@
         
         .hero-badge::before {
             content: '';
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
             background: var(--success);
             border-radius: 50%;
-            animation: pulse 2s infinite;
         }
         
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(0.9); }
-        }
-        
-        .hero h1 {
+        .hero-title {
             font-family: var(--font-display);
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 500;
@@ -228,44 +218,28 @@
             margin-bottom: 1.5rem;
         }
         
-        .hero h1 em {
+        .hero-title em {
             color: var(--or-clair);
             font-style: italic;
         }
         
         .hero-subtitle {
             font-size: 1.125rem;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.75);
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
             line-height: 1.7;
             margin-bottom: 2rem;
-            max-width: 500px;
         }
         
-        @media (max-width: 968px) {
-            .hero-subtitle {
-                margin: 0 auto 2rem;
-            }
-        }
-        
+        /* Hero Stats */
         .hero-stats {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             margin-bottom: 2rem;
         }
         
         @media (max-width: 968px) {
-            .hero-stats {
-                justify-content: center;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-stats {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: center;
-            }
+            .hero-stats { justify-content: center; }
         }
         
         .hero-stat {
@@ -273,44 +247,41 @@
         }
         
         @media (max-width: 968px) {
-            .hero-stat {
-                text-align: center;
-            }
+            .hero-stat { text-align: center; }
         }
         
         .hero-stat-value {
             font-family: var(--font-display);
             font-size: 2.5rem;
             font-weight: 600;
-            color: var(--or-clair);
+            color: var(--neige);
             line-height: 1;
         }
         
         .hero-stat-label {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.6);
             margin-top: 0.25rem;
         }
         
-        .hero-cta {
+        /* Hero Buttons */
+        .hero-buttons {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
         }
         
         @media (max-width: 968px) {
-            .hero-cta {
-                justify-content: center;
-            }
+            .hero-buttons { justify-content: center; }
         }
         
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 1rem 2rem;
+            padding: 1rem 1.75rem;
             font-family: var(--font-body);
             font-size: 0.9rem;
             font-weight: 600;
@@ -329,7 +300,6 @@
         .btn-primary:hover {
             background: var(--or-clair);
             transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(201, 162, 39, 0.3);
         }
         
         .btn-secondary {
@@ -340,63 +310,39 @@
         
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
         
-        /* Hero Card - Carte des zones */
-        .hero-card {
-            background: rgba(255, 255, 255, 0.03);
+        /* Zone Card */
+        .zone-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 1.5rem;
             padding: 2rem;
-            backdrop-filter: blur(10px);
         }
         
-        .hero-card-title {
+        .zone-card-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
             font-family: var(--font-display);
             font-size: 1.25rem;
             font-weight: 500;
             color: var(--neige);
             margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
         }
         
-        .hero-card-title::before {
-            content: '📍';
-        }
-        
-        /* Mini carte stylisée */
         .zone-map {
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 1rem;
-            padding: 1.5rem;
+            height: 180px;
+            position: relative;
             margin-bottom: 1.5rem;
-            position: relative;
-            min-height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .zone-map-visual {
-            width: 100%;
-            max-width: 250px;
-            position: relative;
-        }
-        
-        .zone-map-lake {
-            width: 100%;
-            height: 120px;
-            background: linear-gradient(180deg, rgba(44, 83, 100, 0.6) 0%, rgba(32, 58, 67, 0.8) 100%);
-            border-radius: 50% 50% 45% 45%;
-            position: relative;
             overflow: hidden;
         }
         
-        .zone-map-lake::before {
-            content: 'Lac d\'Annecy';
+        .zone-map-label {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -407,6 +353,7 @@
             letter-spacing: 0.1em;
         }
         
+        /* Zone markers */
         .zone-marker {
             position: absolute;
             width: 40px;
@@ -416,10 +363,10 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: white;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
+            cursor: default;
             transition: transform 0.3s var(--ease-out-expo);
         }
         
@@ -429,22 +376,23 @@
         
         .zone-a-marker {
             background: var(--zone-a);
-            top: 60%;
-            left: 40%;
+            top: 55%;
+            left: 35%;
         }
         
         .zone-b-marker {
             background: var(--zone-b);
-            top: 30%;
+            top: 25%;
             left: 55%;
         }
         
         .zone-c-marker {
             background: var(--zone-c);
-            top: 70%;
-            left: 70%;
+            top: 60%;
+            left: 65%;
         }
         
+        /* Zone Legend */
         .zone-legend {
             display: flex;
             flex-direction: column;
@@ -482,44 +430,83 @@
         .zone-dot.c { background: var(--zone-c); }
         
         .zone-name {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            font-weight: 500;
             color: var(--neige);
         }
         
         .zone-detail {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: rgba(255, 255, 255, 0.5);
         }
         
         .zone-quota {
             font-family: var(--font-display);
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--or-clair);
         }
         
-        /* ==================== SECTION CHIFFRES ==================== */
-        .section {
-            padding: 6rem 2rem;
+        /* ==================== ALERT BANNER ==================== */
+        .alert-banner {
+            background: linear-gradient(90deg, #dc2626 0%, #b91c1c 100%);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
         
-        .section-dark {
-            background: var(--texte);
-            color: var(--neige);
+        .alert-icon {
+            font-size: 1.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+        }
+        
+        .alert-text {
+            color: white;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+        
+        .alert-text strong {
+            font-weight: 700;
+        }
+        
+        .alert-link {
+            color: white;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        
+        .alert-link:hover {
+            color: var(--or-clair);
+        }
+        
+        /* ==================== SECTIONS ==================== */
+        .section {
+            padding: 5rem 2rem;
         }
         
         .section-light {
             background: var(--brume);
         }
         
+        .section-white {
+            background: white;
+        }
+        
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
         }
         
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
         
         .section-eyebrow {
@@ -528,15 +515,16 @@
             text-transform: uppercase;
             letter-spacing: 0.2em;
             color: var(--or-doux);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
         
         .section-title {
             font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2rem, 4vw, 2.75rem);
             font-weight: 500;
-            letter-spacing: -0.02em;
+            color: var(--texte);
             margin-bottom: 1rem;
+            letter-spacing: -0.02em;
         }
         
         .section-subtitle {
@@ -544,44 +532,41 @@
             color: var(--texte-doux);
             max-width: 600px;
             margin: 0 auto;
+            line-height: 1.7;
         }
         
-        .section-dark .section-subtitle {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        /* Stats Grid */
+        /* ==================== STATS GRID ==================== */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
+            gap: 1.5rem;
         }
         
-        @media (max-width: 968px) {
+        @media (max-width: 900px) {
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
         
-        @media (max-width: 480px) {
+        @media (max-width: 500px) {
             .stats-grid {
                 grid-template-columns: 1fr;
             }
         }
         
         .stat-card {
-            background: var(--neige);
+            background: white;
             border-radius: 1rem;
-            padding: 2rem;
+            padding: 1.75rem;
             text-align: center;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.03);
             transition: all 0.3s var(--ease-out-expo);
         }
         
         .stat-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
         
         .stat-icon {
@@ -591,91 +576,74 @@
         
         .stat-value {
             font-family: var(--font-display);
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 600;
             color: var(--lac-moyen);
-            line-height: 1;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
         
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--texte-doux);
-            font-weight: 500;
+            margin-bottom: 0.5rem;
         }
         
         .stat-source {
             font-size: 0.7rem;
             color: var(--texte-muted);
-            margin-top: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
         
-        /* ==================== PARCOURS ==================== */
+        /* ==================== PARCOURS GRID ==================== */
         .parcours-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
         
-        @media (max-width: 968px) {
+        @media (max-width: 900px) {
             .parcours-grid {
                 grid-template-columns: 1fr;
             }
         }
         
         .parcours-card {
-            background: var(--neige);
+            background: white;
             border-radius: 1rem;
             padding: 2rem;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            transition: all 0.4s var(--ease-out-expo);
             text-decoration: none;
             color: inherit;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: all 0.3s var(--ease-out-expo);
             display: block;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .parcours-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--or-doux), var(--or-clair));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s var(--ease-out-expo);
         }
         
         .parcours-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .parcours-card:hover::before {
-            transform: scaleX(1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--or-doux);
         }
         
         .parcours-icon {
             font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
         
         .parcours-title {
             font-family: var(--font-display);
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 500;
-            margin-bottom: 0.75rem;
             color: var(--texte);
+            margin-bottom: 0.75rem;
         }
         
         .parcours-desc {
             font-size: 0.95rem;
             color: var(--texte-doux);
-            margin-bottom: 1.5rem;
             line-height: 1.6;
+            margin-bottom: 1.25rem;
         }
         
         .parcours-links {
@@ -685,59 +653,15 @@
         }
         
         .parcours-link {
+            font-size: 0.8rem;
+            color: var(--or-doux);
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.85rem;
-            color: var(--lac-clair);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .parcours-link:hover {
-            color: var(--or-doux);
         }
         
         .parcours-link::before {
             content: '→';
-            transition: transform 0.3s;
-        }
-        
-        .parcours-link:hover::before {
-            transform: translateX(4px);
-        }
-        
-        /* ==================== ALERTE RÉGLEMENTATION ==================== */
-        .alert-banner {
-            background: linear-gradient(135deg, var(--zone-a) 0%, #991b1b 100%);
-            color: white;
-            padding: 1.5rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            text-align: center;
-            flex-wrap: wrap;
-        }
-        
-        .alert-icon {
-            font-size: 1.5rem;
-        }
-        
-        .alert-text {
-            font-size: 0.95rem;
-        }
-        
-        .alert-text strong {
-            font-weight: 600;
-        }
-        
-        .alert-link {
-            color: white;
-            font-weight: 600;
-            text-decoration: underline;
-            text-underline-offset: 3px;
         }
         
         /* ==================== FOOTER ==================== */
@@ -748,21 +672,20 @@
         }
         
         .footer-content {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
             gap: 3rem;
-            margin-bottom: 3rem;
         }
         
-        @media (max-width: 968px) {
+        @media (max-width: 900px) {
             .footer-content {
                 grid-template-columns: 1fr 1fr;
             }
         }
         
-        @media (max-width: 480px) {
+        @media (max-width: 500px) {
             .footer-content {
                 grid-template-columns: 1fr;
             }
@@ -782,8 +705,8 @@
         .footer-desc {
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.6);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
         }
         
         .footer-badge {
@@ -802,8 +725,8 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            margin-bottom: 1.5rem;
             color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 1.25rem;
         }
         
         .footer-links {
@@ -825,8 +748,8 @@
         }
         
         .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 1100px;
+            margin: 3rem auto 0;
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
@@ -835,35 +758,13 @@
             flex-wrap: wrap;
             gap: 1rem;
             font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.4);
         }
         
         .footer-bottom a {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--or-doux);
             text-decoration: none;
         }
-        
-        .footer-bottom a:hover {
-            color: var(--or-doux);
-        }
-        
-        /* ==================== ANIMATIONS ==================== */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s var(--ease-out-expo);
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Animation staggered pour les grilles */
-        .stagger-1 { transition-delay: 0.1s; }
-        .stagger-2 { transition-delay: 0.2s; }
-        .stagger-3 { transition-delay: 0.3s; }
-        .stagger-4 { transition-delay: 0.4s; }
     </style>
 </head>
 <body>
@@ -885,7 +786,9 @@
             <div class="hero-text">
                 <div class="hero-badge">Mise à jour mars 2026</div>
                 
-                <h1>La location courte durée à <em>Annecy</em>, enfin expliquée</h1>
+                <h1 class="hero-title">
+                    La location courte durée à <em>Annecy</em>, enfin expliquée
+                </h1>
                 
                 <p class="hero-subtitle">
                     Réglementation durcie depuis juin 2025, quotas par zone, fiscalité LMNP — 
@@ -907,7 +810,7 @@
                     </div>
                 </div>
                 
-                <div class="hero-cta">
+                <div class="hero-buttons">
                     <a href="reglementation-2026.html" class="btn btn-primary">
                         Comprendre la réglementation →
                     </a>
@@ -917,17 +820,17 @@
                 </div>
             </div>
             
-            <div class="hero-card">
-                <h3 class="hero-card-title">Zones à quotas — Annecy</h3>
+            <!-- Zone Card -->
+            <div class="zone-card">
+                <h2 class="zone-card-title">
+                    <span>📍</span> Zones à quotas — Annecy
+                </h2>
                 
                 <div class="zone-map">
-                    <div class="zone-map-visual">
-                        <div class="zone-map-lake">
-                            <div class="zone-marker zone-a-marker">A</div>
-                            <div class="zone-marker zone-b-marker">B</div>
-                            <div class="zone-marker zone-c-marker">C</div>
-                        </div>
-                    </div>
+                    <div class="zone-map-label">Lac d'Annecy</div>
+                    <div class="zone-marker zone-a-marker">A</div>
+                    <div class="zone-marker zone-b-marker">B</div>
+                    <div class="zone-marker zone-c-marker">C</div>
                 </div>
                 
                 <div class="zone-legend">
@@ -991,28 +894,28 @@
             </div>
             
             <div class="stats-grid">
-                <div class="stat-card fade-in stagger-1">
+                <div class="stat-card">
                     <div class="stat-icon">🏠</div>
                     <div class="stat-value">~4 000</div>
                     <div class="stat-label">Logements Airbnb actifs</div>
                     <div class="stat-source">Grand Annecy</div>
                 </div>
                 
-                <div class="stat-card fade-in stagger-2">
+                <div class="stat-card">
                     <div class="stat-icon">📈</div>
                     <div class="stat-value">63%</div>
                     <div class="stat-label">Taux d'occupation moyen</div>
                     <div class="stat-source">AirDNA 2025</div>
                 </div>
                 
-                <div class="stat-card fade-in stagger-3">
+                <div class="stat-card">
                     <div class="stat-icon">💰</div>
                     <div class="stat-value">1 992€</div>
                     <div class="stat-label">Revenus mensuels moyens</div>
                     <div class="stat-source">AirDNA 2025</div>
                 </div>
                 
-                <div class="stat-card fade-in stagger-4">
+                <div class="stat-card">
                     <div class="stat-icon">🌡️</div>
                     <div class="stat-value">90%</div>
                     <div class="stat-label">Occupation haute saison</div>
@@ -1023,7 +926,7 @@
     </section>
     
     <!-- Section Parcours -->
-    <section class="section">
+    <section class="section section-white">
         <div class="container">
             <div class="section-header">
                 <p class="section-eyebrow">Guides</p>
@@ -1034,7 +937,7 @@
             </div>
             
             <div class="parcours-grid">
-                <a href="reglementation-2026.html" class="parcours-card fade-in stagger-1">
+                <a href="reglementation-2026.html" class="parcours-card">
                     <div class="parcours-icon">📋</div>
                     <h3 class="parcours-title">Je veux me lancer</h3>
                     <p class="parcours-desc">
@@ -1048,7 +951,7 @@
                     </div>
                 </a>
                 
-                <a href="rentabilite-airbnb-annecy.html" class="parcours-card fade-in stagger-2">
+                <a href="rentabilite-airbnb-annecy.html" class="parcours-card">
                     <div class="parcours-icon">🎯</div>
                     <h3 class="parcours-title">Je veux investir</h3>
                     <p class="parcours-desc">
@@ -1062,7 +965,7 @@
                     </div>
                 </a>
                 
-                <a href="fiscalite-lmnp-annecy.html" class="parcours-card fade-in stagger-3">
+                <a href="fiscalite-lmnp-annecy.html" class="parcours-card">
                     <div class="parcours-icon">📊</div>
                     <h3 class="parcours-title">Je veux optimiser</h3>
                     <p class="parcours-desc">
@@ -1124,12 +1027,12 @@
         
         <div class="footer-bottom">
             <span>© 2026 BNB Annecy · Un projet <a href="https://leman-digital-asset.com">Leman Digital Asset</a></span>
-            <span>Données mises à jour : mars 2026</span>
+            <span>Sources : grandannecy.fr, AirDNA, impots.gouv.fr</span>
         </div>
     </footer>
     
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Navigation scroll
+    <script>
+        // Navigation scroll effect
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -1138,9 +1041,6 @@
                 nav.classList.remove('scrolled');
             }
         });
-        
-        // Fade in on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                i
+    </script>
+</body>
+</html>
