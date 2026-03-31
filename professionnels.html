@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professionnels de la Location Courte Durée à Annecy | BNB Annecy</title>
+    <meta name="description" content="Annuaire des professionnels de la location courte durée à Annecy : conciergeries, comptables LMNP, photographes, artisans. Rejoignez le réseau BNB Annecy.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --lac-profond: #0f2027;
+            --lac-moyen: #203a43;
+            --lac-clair: #2c5364;
+            --or-doux: #c9a227;
+            --or-clair: #f4d35e;
+            --or-pale: #fef3c7;
+            --neige: #fafbfc;
+            --brume: #f1f5f9;
+            --texte: #0f172a;
+            --texte-doux: #475569;
+            --texte-muted: #94a3b8;
+            --success: #22c55e;
+            --success-bg: #dcfce7;
+            
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--neige);
+            color: var(--texte);
+            line-height: 1.7;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--texte);
+            text-decoration: none;
+        }
+        
+        .nav-logo span {
+            color: var(--or-doux);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--texte-doux);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--or-doux);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            background: linear-gradient(180deg, var(--lac-profond) 0%, var(--lac-moyen) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--or-clair);
+            padding: 0.5rem 1rem;
+            background: rgba(201, 162, 39, 0.15);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero h1 em {
+            color: var(--or-clair);
+            font-style: italic;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Section */
+        .section {
+            padding: 6rem 2rem;
+        }
+        
+        .section-light {
+            background: var(--neige);
+        }
+        
+        .section-gray {
+            background: var(--brume);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--or-doux);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--texte-doux);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Categories */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        @media (max-width: 800px) {
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 2px solid transparent;
+            transition: all 0.3s var(--ease-out-expo);
+            cursor: pointer;
+        }
+        
+        .category-card:hover, .category-card.active {
+            border-color: var(--or-doux);
+            transform: translateY(-4px);
+        }
+        
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .category-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .category-count {
+            font-size: 0.8rem;
+            color: var(--texte-muted);
+        }
+        
+        /* Coming Soon Annuaire */
+        .annuaire-placeholder {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 4rem 2rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .annuaire-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .annuaire-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .annuaire-text {
+            font-size: 1rem;
+            color: var(--texte-doux);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Pro Benefits */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        @media (max-width: 800px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .benefit-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        
+        .benefit-desc {
+            font-size: 0.95rem;
+            color: var(--texte-doux);
+        }
+        
+        /* Join CTA */
+        .join-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--lac-profond) 0%, var(--lac-moyen) 100%);
+            color: white;
+        }
+        
+        .join-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .join-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        .join-text h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .join-text p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+        
+        .join-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .join-list li {
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        @media (max-width: 768px) {
+            .join-list {
+                display: inline-block;
+                text-align: left;
+            }
+        }
+        
+        .join-list li::before {
+            content: '✓';
+            color: var(--or-clair);
+            font-weight: bold;
+        }
+        
+        /* Form */
+        .join-form {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+        
+        .form-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-input, .form-select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            color: white;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .form-input:focus, .form-select:focus {
+            border-color: var(--or-doux);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23fff' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+        
+        .form-select option {
+            background: var(--lac-profond);
+            color: white;
+        }
+        
+        .form-btn {
+            width: 100%;
+            padding: 1rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            background: var(--or-doux);
+            color: var(--lac-profond);
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-out-expo);
+            margin-top: 0.5rem;
+        }
+        
+        .form-btn:hover {
+            background: var(--or-clair);
+            transform: translateY(-2px);
+        }
+        
+        .form-note {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        /* Data Section */
+        .data-section {
+            padding: 6rem 2rem;
+            background: var(--brume);
+        }
+        
+        .data-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .data-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .data-text {
+            font-size: 1.1rem;
+            color: var(--texte-doux);
+            margin-bottom: 3rem;
+        }
+        
+        .data-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        @media (max-width: 700px) {
+            .data-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .data-stat {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .data-stat-value {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--lac-moyen);
+            margin-bottom: 0.25rem;
+        }
+        
+        .data-stat-label {
+            font-size: 0.85rem;
+            color: var(--texte-muted);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--lac-profond);
+            color: var(--neige);
+            padding: 3rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-brand span {
+            color: var(--or-doux);
+        }
+        
+        .footer-text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .footer-text a {
+            color: var(--or-doux);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">bnb<span>·</span>annecy</a>
+        <ul class="nav-links">
+            <li><a href="reglementation-2026.html">Réglementation</a></li>
+            <li><a href="rentabilite-airbnb-annecy.html">Rentabilité</a></li>
+            <li><a href="fiscalite-lmnp-annecy.html">Fiscalité</a></li>
+            <li><a href="radar-biens.html">Radar Biens</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">💼 Espace pro</span>
+            
+            <h1>Professionnels de la <em>location courte durée</em></h1>
+            
+            <p class="hero-subtitle">
+                Conciergeries, comptables LMNP, photographes, artisans — 
+                rejoignez le réseau BNB Annecy et connectez-vous avec les propriétaires.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Categories -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-eyebrow">Catégories</p>
+                <h2 class="section-title">Tous les métiers du meublé de tourisme</h2>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">🏠</div>
+                    <div class="category-name">Conciergeries</div>
+                    <div class="category-count">Bientôt disponible</div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">📊</div>
+                    <div class="category-name">Comptables LMNP</div>
+                    <div class="category-count">Bientôt disponible</div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">📸</div>
+                    <div class="category-name">Photographes</div>
+                    <div class="category-count">Bientôt disponible</div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">🔧</div>
+                    <div class="category-name">Artisans</div>
+                    <div class="category-count">Bientôt disponible</div>
+                </div>
+            </div>
+            
+            <div class="annuaire-placeholder">
+                <div class="annuaire-icon">🚧</div>
+                <h3 class="annuaire-title">Annuaire en construction</h3>
+                <p class="annuaire-text">
+                    Nous construisons l'annuaire des professionnels de la location courte durée 
+                    à Annecy. Inscrivez-vous dès maintenant pour être parmi les premiers référencés.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Benefits for Pros -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-eyebrow">Avantages</p>
+                <h2 class="section-title">Pourquoi rejoindre BNB Annecy ?</h2>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3 class="benefit-title">Leads qualifiés</h3>
+                    <p class="benefit-desc">
+                        Recevez des demandes de propriétaires qui cherchent exactement 
+                        vos services, sans avoir à prospecter.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">📈</div>
+                    <h3 class="benefit-title">Visibilité locale</h3>
+                    <p class="benefit-desc">
+                        Apparaissez sur le guide de référence de la location courte durée 
+                        à Annecy, consulté par des centaines de propriétaires.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3 class="benefit-title">Données marché</h3>
+                    <p class="benefit-desc">
+                        Accédez à nos données locales (taux d'occupation, revenus moyens) 
+                        pour enrichir vos pitchs et conseils clients.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Join Section -->
+    <section class="join-section">
+        <div class="join-content">
+            <div class="join-text">
+                <h2>Rejoignez le réseau</h2>
+                <p>
+                    L'inscription est gratuite pendant la phase de lancement. 
+                    Soyez parmi les premiers professionnels référencés sur BNB Annecy.
+                </p>
+                <ul class="join-list">
+                    <li>Fiche professionnelle personnalisée</li>
+                    <li>Mise en relation avec les propriétaires</li>
+                    <li>Badge "Partenaire BNB Annecy"</li>
+                    <li>Accès aux données marché</li>
+                </ul>
+            </div>
+            
+            <form class="join-form" onsubmit="handleProSubmit(event)">
+                <h3 class="form-title">Inscription Pro</h3>
+                
+                <div class="form-group">
+                    <label class="form-label">Nom de l'entreprise</label>
+                    <input type="text" class="form-input" placeholder="Ex: Annecy Conciergerie" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Catégorie</label>
+                    <select class="form-select" required>
+                        <option value="">Sélectionnez...</option>
+                        <option value="conciergerie">Conciergerie</option>
+                        <option value="comptable">Comptable / Expert-comptable</option>
+                        <option value="photographe">Photographe</option>
+                        <option value="artisan">Artisan (ménage, plombier, etc.)</option>
+                        <option value="chasseur">Chasseur immobilier</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email professionnel</label>
+                    <input type="email" class="form-input" placeholder="contact@votreentreprise.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Téléphone</label>
+                    <input type="tel" class="form-input" placeholder="06 XX XX XX XX">
+                </div>
+                
+                <button type="submit" class="form-btn">S'inscrire gratuitement →</button>
+                
+                <p class="form-note">Gratuit pendant le lancement · Sans engagement</p>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Data Section -->
+    <section class="data-section">
+        <div class="data-content">
+            <h2 class="data-title">Des données pour vos pitchs</h2>
+            <p class="data-text">
+                En tant que partenaire, accédez à nos données locales pour enrichir 
+                vos présentations et conseils clients.
+            </p>
+            
+            <div class="data-stats">
+                <div class="data-stat">
+                    <div class="data-stat-value">63%</div>
+                    <div class="data-stat-label">Taux occupation moyen</div>
+                </div>
+                <div class="data-stat">
+                    <div class="data-stat-value">24k€</div>
+                    <div class="data-stat-label">Revenus annuels moyens</div>
+                </div>
+                <div class="data-stat">
+                    <div class="data-stat-value">2 660</div>
+                    <div class="data-stat-label">Quotas Annecy</div>
+                </div>
+                <div class="data-stat">
+                    <div class="data-stat-value">27</div>
+                    <div class="data-stat-label">Communes réglementées</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-brand">bnb<span>·</span>annecy</p>
+            <p class="footer-text">
+                © 2026 · Un projet <a href="https://leman-digital-asset.com">Leman Digital Asset</a>
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        function handleProSubmit(e) {
+            e.preventDefault();
+            // Ici on pourrait envoyer à Supabase
+            alert('Merci pour votre inscription ! Nous vous contacterons très prochainement.');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>

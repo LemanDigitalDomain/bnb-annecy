@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiscalité LMNP Annecy 2026 — Micro-BIC vs Réel, Exemple Chiffré | BNB Annecy</title>
+    <meta name="description" content="Fiscalité location meublée LMNP à Annecy : Micro-BIC (abattement 30-50%) vs Régime Réel (amortissements). Exemple chiffré sur un T2 avec 25 000€ de revenus.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Schema.org FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Quel régime fiscal choisir pour la location meublée à Annecy ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Le régime réel est généralement plus avantageux dès que vos charges dépassent 30% de vos revenus (50% hors zone tendue). Avec les amortissements du bien et du mobilier, vous pouvez souvent réduire votre base imposable à zéro."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Quel est l'abattement Micro-BIC pour les meublés de tourisme en 2026 ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Depuis 2024, l'abattement Micro-BIC est de 30% en zone tendue (dont Annecy) avec un plafond de 15 000€ de revenus. Hors zone tendue, l'abattement est de 50% jusqu'à 77 700€ de revenus."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Qu'est-ce que le statut LMNP ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "LMNP signifie Loueur en Meublé Non Professionnel. Ce statut s'applique si vos revenus locatifs meublés sont inférieurs à 23 000€/an ET représentent moins de 50% de vos revenus globaux."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Comment fonctionne l'amortissement en LMNP ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "L'amortissement permet de déduire chaque année une partie de la valeur du bien (hors terrain) et du mobilier. Pour un bien, c'est généralement 2-3% par an sur 30-40 ans. Pour le mobilier, 10-20% par an sur 5-10 ans."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Dois-je prendre un comptable pour ma location meublée ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "En Micro-BIC, non obligatoire. En régime réel, fortement recommandé : un comptable coûte 300-600€/an mais optimise vos amortissements et vous fait souvent économiser bien plus en impôts."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Annecy est-elle en zone tendue ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Oui, Annecy et la plupart des communes du Grand Annecy sont classées en zone tendue. Cela impacte l'abattement Micro-BIC (30% au lieu de 50%) et le plafond de revenus (15 000€ au lieu de 77 700€)."
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <style>
+        :root {
+            --lac-profond: #0f2027;
+            --lac-moyen: #203a43;
+            --lac-clair: #2c5364;
+            --or-doux: #c9a227;
+            --or-clair: #f4d35e;
+            --or-pale: #fef3c7;
+            --neige: #fafbfc;
+            --brume: #f1f5f9;
+            --texte: #0f172a;
+            --texte-doux: #475569;
+            --texte-muted: #94a3b8;
+            --success: #22c55e;
+            --success-bg: #dcfce7;
+            --warning: #f59e0b;
+            --warning-bg: #fef3c7;
+            --danger: #ef4444;
+            --info: #3b82f6;
+            --info-bg: #dbeafe;
+            
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--neige);
+            color: var(--texte);
+            line-height: 1.7;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--texte);
+            text-decoration: none;
+        }
+        
+        .nav-logo span {
+            color: var(--or-doux);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--texte-doux);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--or-doux);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+        
+        /* Header */
+        .article-header {
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(180deg, var(--brume) 0%, var(--neige) 100%);
+        }
+        
+        .article-header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .breadcrumb {
+            font-size: 0.8rem;
+            color: var(--texte-muted);
+            margin-bottom: 1.5rem;
+        }
+        
+        .breadcrumb a {
+            color: var(--texte-doux);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--or-doux);
+        }
+        
+        .article-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--info);
+            padding: 0.5rem 1rem;
+            background: var(--info-bg);
+            border-radius: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .article-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 500;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+        
+        .article-subtitle {
+            font-size: 1.25rem;
+            color: var(--texte-doux);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .article-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: var(--texte-muted);
+        }
+        
+        /* Layout */
+        .article-layout {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 4rem;
+        }
+        
+        @media (max-width: 968px) {
+            .article-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .article-content {
+            max-width: 800px;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 6rem;
+            height: fit-content;
+        }
+        
+        @media (max-width: 968px) {
+            .sidebar { display: none; }
+        }
+        
+        .toc {
+            background: var(--brume);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+        
+        .toc-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--texte-muted);
+            margin-bottom: 1rem;
+        }
+        
+        .toc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .toc-list a {
+            font-size: 0.85rem;
+            color: var(--texte-doux);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            padding-left: 1rem;
+            border-left: 2px solid transparent;
+        }
+        
+        .toc-list a:hover,
+        .toc-list a.active {
+            color: var(--or-doux);
+            border-left-color: var(--or-doux);
+        }
+        
+        /* Content */
+        .content-section {
+            margin-bottom: 4rem;
+        }
+        
+        .content-section h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--brume);
+        }
+        
+        .content-section h2:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        
+        .content-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin: 2rem 0 1rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1.25rem;
+            color: var(--texte);
+        }
+        
+        .content-section ul, .content-section ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        
+        .content-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .content-section a {
+            color: var(--lac-clair);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        
+        .content-section a:hover {
+            color: var(--or-doux);
+        }
+        
+        /* Comparison Cards */
+        .compare-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        @media (max-width: 700px) {
+            .compare-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .compare-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 2px solid transparent;
+            transition: all 0.3s var(--ease-out-expo);
+        }
+        
+        .compare-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .compare-card.recommended {
+            border-color: var(--success);
+            position: relative;
+        }
+        
+        .compare-card.recommended::before {
+            content: '✓ Recommandé';
+            position: absolute;
+            top: -12px;
+            left: 1.5rem;
+            background: var(--success);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .compare-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .compare-card-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .compare-card-subtitle {
+            font-size: 0.85rem;
+            color: var(--texte-muted);
+            margin-bottom: 1.5rem;
+        }
+        
+        .compare-card-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .compare-card-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--brume);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .compare-card-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .compare-card-list .pro {
+            color: var(--success);
+        }
+        
+        .compare-card-list .con {
+            color: var(--danger);
+        }
+        
+        /* Calcul Box */
+        .calc-box {
+            background: linear-gradient(135deg, var(--lac-profond) 0%, var(--lac-moyen) 100%);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            color: white;
+            margin: 2rem 0;
+        }
+        
+        .calc-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .calc-subtitle {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+        }
+        
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        @media (max-width: 600px) {
+            .calc-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .calc-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+        
+        .calc-section h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--or-clair);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .calc-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+        }
+        
+        .calc-row:last-child {
+            border-bottom: none;
+        }
+        
+        .calc-row-label {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .calc-row-value {
+            font-weight: 600;
+        }
+        
+        .calc-row-value.negative {
+            color: #fca5a5;
+        }
+        
+        .calc-total {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .calc-total-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .calc-total-value {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--or-clair);
+        }
+        
+        .calc-verdict {
+            background: var(--success);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .calc-verdict-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .calc-verdict-value {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 600;
+        }
+        
+        .calc-verdict-detail {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-top: 0.25rem;
+        }
+        
+        /* Info boxes */
+        .info-box {
+            background: var(--brume);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .info-box-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .info-box p, .info-box ul {
+            font-size: 0.9rem;
+            color: var(--texte-doux);
+            margin-bottom: 0;
+        }
+        
+        .info-box ul {
+            margin-top: 0.75rem;
+            padding-left: 1.25rem;
+        }
+        
+        .info-box li {
+            margin-bottom: 0.25rem;
+        }
+        
+        /* Alert */
+        .alert {
+            padding: 1.25rem 1.5rem;
+            border-radius: 0.75rem;
+            margin: 2rem 0;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        
+        .alert-warning {
+            background: var(--warning-bg);
+            border-left: 4px solid var(--warning);
+        }
+        
+        .alert-info {
+            background: var(--info-bg);
+            border-left: 4px solid var(--info);
+        }
+        
+        .alert-success {
+            background: var(--success-bg);
+            border-left: 4px solid var(--success);
+        }
+        
+        .alert-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+        
+        .alert-content {
+            flex: 1;
+        }
+        
+        .alert-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .alert-text {
+            font-size: 0.9rem;
+            color: var(--texte-doux);
+        }
+        
+        /* Table */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        
+        thead {
+            background: var(--lac-profond);
+            color: white;
+        }
+        
+        th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--brume);
+        }
+        
+        tbody tr:hover {
+            background: var(--brume);
+        }
+        
+        .table-highlight {
+            background: var(--success-bg) !important;
+        }
+        
+        /* FAQ */
+        .faq-section {
+            margin: 3rem 0;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid var(--brume);
+            padding: 1.5rem 0;
+        }
+        
+        .faq-question {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--or-doux);
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.open .faq-question::after {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            font-size: 0.95rem;
+            color: var(--texte-doux);
+            line-height: 1.7;
+            display: none;
+            margin-top: 1rem;
+        }
+        
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+        
+        /* CTA */
+        .cta-box {
+            background: var(--brume);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-text {
+            font-size: 1rem;
+            color: var(--texte-doux);
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--lac-profond);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s var(--ease-out-expo);
+        }
+        
+        .cta-btn:hover {
+            background: var(--lac-moyen);
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--lac-profond);
+            color: var(--neige);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-brand span {
+            color: var(--or-doux);
+        }
+        
+        .footer-text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .footer-text a {
+            color: var(--or-doux);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">bnb<span>·</span>annecy</a>
+        <ul class="nav-links">
+            <li><a href="reglementation-2026.html">Réglementation</a></li>
+            <li><a href="rentabilite-airbnb-annecy.html">Rentabilité</a></li>
+            <li><a href="fiscalite-lmnp-annecy.html" class="active">Fiscalité</a></li>
+            <li><a href="radar-biens.html">Radar Biens</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Header -->
+    <header class="article-header">
+        <div class="article-header-content">
+            <nav class="breadcrumb">
+                <a href="index.html">Accueil</a> → Fiscalité
+            </nav>
+            
+            <span class="article-badge">💰 Guide fiscal</span>
+            
+            <h1 class="article-title">Fiscalité LMNP pour la location courte durée</h1>
+            
+            <p class="article-subtitle">
+                Micro-BIC ou régime réel ? Quel abattement depuis 2024 ? 
+                Comment fonctionnent les amortissements ? On décrypte tout avec un exemple chiffré.
+            </p>
+            
+            <div class="article-meta">
+                <span class="article-meta-item">📅 Règles 2026</span>
+                <span class="article-meta-item">⏱️ 12 min de lecture</span>
+                <span class="article-meta-item">⚠️ Non substitut à un comptable</span>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Contenu -->
+    <div class="article-layout">
+        <article class="article-content">
+            
+            <div class="alert alert-warning">
+                <span class="alert-icon">⚠️</span>
+                <div class="alert-content">
+                    <p class="alert-title">Information générale</p>
+                    <p class="alert-text">
+                        Ce guide présente les principes généraux de la fiscalité LMNP. 
+                        Chaque situation étant unique, nous recommandons de consulter un expert-comptable 
+                        pour optimiser votre fiscalité personnelle.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Section 1 -->
+            <section class="content-section" id="lmnp">
+                <h2>Le statut LMNP, c'est quoi ?</h2>
+                
+                <p>
+                    <strong>LMNP</strong> signifie Loueur en Meublé Non Professionnel. C'est le statut fiscal 
+                    qui s'applique à la majorité des propriétaires qui louent un bien meublé, 
+                    y compris en location courte durée (Airbnb, Booking, etc.).
+                </p>
+                
+                <p>
+                    Vous êtes automatiquement LMNP si vous remplissez ces deux conditions :
+                </p>
+                
+                <ul>
+                    <li>Vos revenus locatifs meublés sont <strong>inférieurs à 23 000€/an</strong></li>
+                    <li>Ces revenus représentent <strong>moins de 50%</strong> de vos revenus globaux</li>
+                </ul>
+                
+                <p>
+                    Au-delà, vous passez au statut LMP (Loueur Meublé Professionnel), avec des règles différentes.
+                </p>
+                
+                <div class="info-box">
+                    <h4 class="info-box-title">📌 Pourquoi le meublé est intéressant fiscalement</h4>
+                    <p>
+                        Contrairement à la location nue (revenus fonciers), la location meublée 
+                        relève des BIC (Bénéfices Industriels et Commerciaux). Cela ouvre l'accès 
+                        à l'<strong>amortissement du bien</strong>, un avantage fiscal majeur.
+                    </p>
+                </div>
+            </section>
+            
+            <!-- Section 2 -->
+            <section class="content-section" id="regimes">
+                <h2>Les deux régimes fiscaux</h2>
+                
+                <p>
+                    En LMNP, vous avez le choix entre deux régimes d'imposition : 
+                    le <strong>Micro-BIC</strong> (simplifié) ou le <strong>Régime Réel</strong> (détaillé).
+                </p>
+                
+                <div class="compare-cards">
+                    <div class="compare-card">
+                        <div class="compare-card-icon">📋</div>
+                        <h3 class="compare-card-title">Micro-BIC</h3>
+                        <p class="compare-card-subtitle">Simple mais limité</p>
+                        <ul class="compare-card-list">
+                            <li><span class="pro">✓</span> Déclaration simplifiée</li>
+                            <li><span class="pro">✓</span> Pas de comptable obligatoire</li>
+                            <li><span class="pro">✓</span> Abattement forfaitaire automatique</li>
+                            <li><span class="con">✗</span> Abattement réduit en zone tendue (30%)</li>
+                            <li><span class="con">✗</span> Plafond 15 000€ en zone tendue</li>
+                            <li><span class="con">✗</span> Pas d'amortissement possible</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="compare-card recommended">
+                        <div class="compare-card-icon">📊</div>
+                        <h3 class="compare-card-title">Régime Réel</h3>
+                        <p class="compare-card-subtitle">Plus complexe mais optimisé</p>
+                        <ul class="compare-card-list">
+                            <li><span class="pro">✓</span> Déduction des charges réelles</li>
+                            <li><span class="pro">✓</span> Amortissement du bien</li>
+                            <li><span class="pro">✓</span> Amortissement du mobilier</li>
+                            <li><span class="pro">✓</span> Souvent 0€ d'impôt sur les loyers</li>
+                            <li><span class="con">✗</span> Comptable recommandé (300-600€/an)</li>
+                            <li><span class="con">✗</span> Comptabilité plus complexe</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section 3 -->
+            <section class="content-section" id="micro-bic">
+                <h2>Le Micro-BIC en détail</h2>
+                
+                <p>
+                    Le Micro-BIC est le régime par défaut si vos revenus sont sous les seuils. 
+                    Il applique un <strong>abattement forfaitaire</strong> sur vos revenus, 
+                    censé couvrir toutes vos charges.
+                </p>
+                
+                <h3>Les règles depuis 2024 (loi de finances)</h3>
+                
+                <p>
+                    Attention, les règles ont changé ! Depuis 2024, l'abattement dépend de la localisation :
+                </p>
+                
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Zone</th>
+                                <th>Abattement</th>
+                                <th>Plafond revenus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Zone tendue</strong> (dont Annecy)</td>
+                                <td>30%</td>
+                                <td>15 000€</td>
+                            </tr>
+                            <tr>
+                                <td>Hors zone tendue</td>
+                                <td>50%</td>
+                                <td>77 700€</td>
+                            </tr>
+                            <tr>
+                                <td>Meublé classé (tourisme 1-5 étoiles)</td>
+                                <td>71%</td>
+                                <td>188 700€</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="alert alert-info">
+                    <span class="alert-icon">ℹ️</span>
+                    <div class="alert-content">
+                        <p class="alert-title">Annecy = Zone tendue</p>
+                        <p class="alert-text">
+                            Annecy et la plupart des communes du Grand Annecy sont classées en zone tendue. 
+                            L'abattement Micro-BIC est donc de <strong>30%</strong> seulement, 
+                            et le plafond de <strong>15 000€</strong> de revenus.
+                        </p>
+                    </div>
+                </div>
+                
+                <h3>Exemple Micro-BIC à Annecy</h3>
+                
+                <p>
+                    Avec 15 000€ de revenus locatifs :
+                </p>
+                
+                <ul>
+                    <li>Abattement 30% : 4 500€</li>
+                    <li>Base imposable : 10 500€</li>
+                    <li>Impôt (TMI 30%) : <strong>3 150€</strong></li>
+                    <li>+ Prélèvements sociaux (17,2%) : <strong>1 806€</strong></li>
+                    <li><strong>Total : 4 956€</strong> d'impôts (33% des revenus)</li>
+                </ul>
+            </section>
+            
+            <!-- Section 4 -->
+            <section class="content-section" id="reel">
+                <h2>Le Régime Réel : la puissance des amortissements</h2>
+                
+                <p>
+                    Le régime réel permet de déduire vos <strong>charges réelles</strong> 
+                    ET d'<strong>amortir</strong> le bien et le mobilier. C'est souvent beaucoup 
+                    plus avantageux que le Micro-BIC, surtout à Annecy.
+                </p>
+                
+                <h3>Qu'est-ce que l'amortissement ?</h3>
+                
+                <p>
+                    L'amortissement est une charge comptable (non décaissée) qui représente 
+                    la perte de valeur théorique du bien dans le temps. Vous pouvez déduire 
+                    chaque année une fraction de la valeur du bien et du mobilier.
+                </p>
+                
+                <div class="info-box">
+                    <h4 class="info-box-title">📌 Durées d'amortissement types</h4>
+                    <ul>
+                        <li><strong>Bâtiment</strong> (hors terrain) : 25-40 ans → 2,5% à 4%/an</li>
+                        <li><strong>Gros travaux</strong> (toiture, façade) : 15-25 ans</li>
+                        <li><strong>Équipements</strong> (cuisine, salle de bain) : 10-15 ans</li>
+                        <li><strong>Mobilier</strong> : 5-10 ans → 10% à 20%/an</li>
+                        <li><strong>Électroménager</strong> : 5-7 ans</li>
+                    </ul>
+                </div>
+                
+                <h3>Les charges déductibles</h3>
+                
+                <ul>
+                    <li>Intérêts d'emprunt</li>
+                    <li>Assurance PNO</li>
+                    <li>Charges de copropriété</li>
+                    <li>Taxe foncière</li>
+                    <li>Frais de conciergerie</li>
+                    <li>Frais de ménage, linge</li>
+                    <li>Frais d'annonces (Airbnb commission)</li>
+                    <li>Honoraires comptable</li>
+                    <li>Petits travaux d'entretien</li>
+                    <li>Frais de déplacement (visites du bien)</li>
+                </ul>
+            </section>
+            
+            <!-- Section 5 -->
+            <section class="content-section" id="exemple">
+                <h2>Exemple chiffré : T2 à 280 000€ avec 25 000€ de revenus</h2>
+                
+                <p>
+                    Reprenons l'exemple de la page rentabilité : un T2 acheté 280 000€, 
+                    générant 25 300€ de revenus bruts. Comparons les deux régimes.
+                </p>
+                
+                <div class="calc-box">
+                    <h3 class="calc-title">Comparatif fiscal — T2 Annecy</h3>
+                    <p class="calc-subtitle">Revenus bruts : 25 300€ · TMI : 30%</p>
+                    
+                    <div class="calc-grid">
+                        <div class="calc-section">
+                            <h4>❌ Micro-BIC impossible</h4>
+                            <div class="calc-row">
+                                <span class="calc-row-label">Revenus</span>
+                                <span class="calc-row-value">25 300€</span>
+                            </div>
+                            <div class="calc-row">
+                                <span class="calc-row-label">Plafond zone tendue</span>
+                                <span class="calc-row-value negative">15 000€</span>
+                            </div>
+                            <div class="calc-row">
+                                <span class="calc-row-label">Verdict</span>
+                                <span class="calc-row-value negative">Dépassé !</span>
+                            </div>
+                            <p style="font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 1rem;">
+                                → Régime réel obligatoire car revenus > 15 000€
+                            </p>
+                        </div>
+                        
+                        <div class="calc-section">
+                            <h4>✓ Régime Réel</h4>
+                            <div class="calc-row">
+                                <span class="calc-row-label">Revenus bruts</span>
+                                <span class="calc-row-value">25 300€</span>
+                            </div>
+                            <div class="calc-row">
+                                <span class="calc-row-label">Charges (hors amort.)</span>
+                                <span class="calc-row-value negative">-11 200€</span>
+                            </div>
+                            <div class="calc-row">
+                                <span class="calc-row-label">Amort. bien (2,5%)</span>
+                                <span class="calc-row-value negative">-5 600€</span>
+                            </div>
+                            <div class="calc-row">
+                                <span class="calc-row-label">Amort. mobilier</span>
+                                <span class="calc-row-value negative">-2 000€</span>
+                            </div>
+                            <div class="calc-total">
+                                <span class="calc-total-label">Base imposable</span>
+                                <span class="calc-total-value">6 500€</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calc-verdict">
+                        <div class="calc-verdict-label">Impôt régime réel</div>
+                        <div class="calc-verdict-value">~3 068€</div>
+                        <div class="calc-verdict-detail">
+                            IR (30%) : 1 950€ + PS (17,2%) : 1 118€
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-success">
+                    <span class="alert-icon">✓</span>
+                    <div class="alert-content">
+                        <p class="alert-title">Résultat avec amortissements bien calculés</p>
+                        <p class="alert-text">
+                            En optimisant les amortissements (composants du bien, travaux, mobilier), 
+                            il est souvent possible de réduire la base imposable à <strong>zéro</strong>, 
+                            et donc de ne payer <strong>aucun impôt</strong> sur les loyers pendant plusieurs années.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section 6 -->
+            <section class="content-section" id="comptable">
+                <h2>Faut-il prendre un comptable ?</h2>
+                
+                <h3>En Micro-BIC</h3>
+                <p>
+                    Non obligatoire. La déclaration est simple : vous reportez vos revenus bruts 
+                    sur votre déclaration de revenus (formulaire 2042 C PRO), l'abattement est calculé automatiquement.
+                </p>
+                
+                <h3>En Régime Réel</h3>
+                <p>
+                    Fortement recommandé. Un expert-comptable spécialisé LMNP coûte entre 
+                    <strong>300€ et 600€/an</strong> (déductible des charges), mais :
+                </p>
+                
+                <ul>
+                    <li>Il optimise vos amortissements (souvent plusieurs milliers d'euros d'économie)</li>
+                    <li>Il établit la liasse fiscale obligatoire</li>
+                    <li>Il vous fait adhérer à un CGA (réduction d'impôt de 2/3 des frais comptables)</li>
+                    <li>Il gère les déclarations administratives (CFE, P0i...)</li>
+                    <li>Il sécurise votre déclaration en cas de contrôle</li>
+                </ul>
+                
+                <div class="info-box">
+                    <h4 class="info-box-title">💡 Notre conseil</h4>
+                    <p>
+                        Pour un bien générant plus de 10 000€/an de revenus, un comptable spécialisé 
+                        LMNP est quasi-indispensable. L'investissement (300-600€) est généralement 
+                        rentabilisé plusieurs fois grâce à l'optimisation fiscale.
+                    </p>
+                </div>
+            </section>
+            
+            <!-- Section 7 -->
+            <section class="content-section" id="demarches">
+                <h2>Les démarches administratives</h2>
+                
+                <h3>À faire au démarrage</h3>
+                
+                <ol>
+                    <li><strong>Déclaration P0i</strong> — Formulaire de début d'activité LMNP, à déposer dans les 15 jours suivant le début de la location (via le guichet unique INPI)</li>
+                    <li><strong>Option régime réel</strong> — Si vous choisissez le réel, lettre d'option à envoyer au SIE avant le 1er février de l'année concernée</li>
+                    <li><strong>Adhésion CGA</strong> — Centre de Gestion Agréé, pour bénéficier d'avantages fiscaux (~150€/an)</li>
+                </ol>
+                
+                <h3>Chaque année</h3>
+                
+                <ul>
+                    <li><strong>Déclaration 2042 C PRO</strong> — Report des revenus/résultat sur votre déclaration personnelle</li>
+                    <li><strong>Liasse fiscale 2031</strong> — Si régime réel, établie par votre comptable</li>
+                    <li><strong>CFE</strong> — Cotisation Foncière des Entreprises, payable en décembre (~200-500€ selon communes)</li>
+                </ul>
+            </section>
+            
+            <!-- FAQ -->
+            <section class="content-section faq-section" id="faq">
+                <h2>Questions fréquentes</h2>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Puis-je changer de régime fiscal ?</h3>
+                    <p class="faq-answer">
+                        Oui, vous pouvez passer du Micro-BIC au réel (et inversement) en envoyant 
+                        une lettre d'option à votre SIE avant le 1er février de l'année concernée. 
+                        Le changement prend effet pour l'année en cours.
+                    </p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">L'amortissement impacte-t-il la plus-value à la revente ?</h3>
+                    <p class="faq-answer">
+                        <strong>Non</strong>, c'est l'un des grands avantages du LMNP. Les amortissements 
+                        déduits ne sont pas réintégrés dans le calcul de la plus-value. Vous bénéficiez 
+                        du régime des plus-values des particuliers, avec exonération totale après 22 ans 
+                        (IR) et 30 ans (prélèvements sociaux).
+                    </p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Que se passe-t-il si j'ai un déficit ?</h3>
+                    <p class="faq-answer">
+                        En LMNP, le déficit n'est pas imputable sur vos autres revenus. Il est reportable 
+                        sur les bénéfices de même nature pendant 10 ans. L'amortissement ne peut pas 
+                        créer de déficit, il est mis en réserve et utilisé les années suivantes.
+                    </p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Dois-je facturer la TVA ?</h3>
+                    <p class="faq-answer">
+                        En général <strong>non</strong>. La location meublée simple est exonérée de TVA. 
+                        Elle devient obligatoire uniquement si vous proposez des services para-hôteliers 
+                        (petit-déjeuner, ménage quotidien, réception, linge de maison renouvelé).
+                    </p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Qu'est-ce que le CGA et pourquoi y adhérer ?</h3>
+                    <p class="faq-answer">
+                        Le Centre de Gestion Agréé est un organisme qui vérifie votre comptabilité. 
+                        L'adhésion (~150€/an) vous permet de bénéficier d'une réduction d'impôt égale 
+                        aux 2/3 de vos frais de comptabilité (plafonnée à 915€). Si vous payez 500€ 
+                        de comptable, vous récupérez ~333€ en réduction d'impôt.
+                    </p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Comment classer mon meublé pour bénéficier de l'abattement 71% ?</h3>
+                    <p class="faq-answer">
+                        Le classement en meublé de tourisme (1 à 5 étoiles) se fait via un organisme 
+                        agréé qui effectue une visite de contrôle (~200-300€). Le classement est valable 
+                        5 ans. Attention, le classement impose aussi des obligations (affichage des prix, 
+                        registre des voyageurs, etc.).
+                    </p>
+                </div>
+            </section>
+            
+            <!-- CTA -->
+            <div class="cta-box">
+                <h3 class="cta-title">Besoin d'un comptable spécialisé LMNP ?</h3>
+                <p class="cta-text">
+                    Myrtille peut vous orienter vers des experts-comptables 
+                    partenaires spécialisés dans la location meublée.
+                </p>
+                <a href="index.html#myrtille" class="cta-btn">
+                    Parler à Myrtille →
+                </a>
+            </div>
+            
+        </article>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="toc">
+                <h4 class="toc-title">Sommaire</h4>
+                <ul class="toc-list">
+                    <li><a href="#lmnp">Le statut LMNP</a></li>
+                    <li><a href="#regimes">Les deux régimes</a></li>
+                    <li><a href="#micro-bic">Le Micro-BIC</a></li>
+                    <li><a href="#reel">Le Régime Réel</a></li>
+                    <li><a href="#exemple">Exemple chiffré</a></li>
+                    <li><a href="#comptable">Faut-il un comptable ?</a></li>
+                    <li><a href="#demarches">Démarches</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-brand">bnb<span>·</span>annecy</p>
+            <p class="footer-text">
+                © 2026 · Un projet <a href="https://leman-digital-asset.com">Leman Digital Asset</a><br>
+                Sources : impots.gouv.fr, bofip.impots.gouv.fr, legifrance.gouv.fr
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('open');
+            });
+        });
+        
+        // TOC Active state
+        const sections = document.querySelectorAll('.content-section[id]');
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

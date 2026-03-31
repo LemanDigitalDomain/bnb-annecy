@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BNB Annecy — Guide Location Courte Durée Annecy 2026</title>
+    <meta name="description" content="Guide complet de la location courte durée à Annecy : réglementation 2026, quotas par zone (460/1000/1200), rentabilité, fiscalité LMNP. Données locales exclusives.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="BNB Annecy — Guide Location Courte Durée 2026">
+    <meta property="og:description" content="Réglementation, quotas, rentabilité : tout savoir sur Airbnb à Annecy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bnb-annecy.com">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "BNB Annecy",
+        "url": "https://bnb-annecy.com",
+        "description": "Guide complet de la location courte durée à Annecy",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Leman Digital Asset"
+        }
+    }
+    </script>
+    
+    <style>
+        :root {
+            --lac-profond: #0f2027;
+            --lac-moyen: #203a43;
+            --lac-clair: #2c5364;
+            --or-doux: #c9a227;
+            --or-clair: #f4d35e;
+            --or-pale: #fef3c7;
+            --neige: #fafbfc;
+            --brume: #f1f5f9;
+            --texte: #0f172a;
+            --texte-doux: #475569;
+            --texte-muted: #94a3b8;
+            --zone-a: #dc2626;
+            --zone-b: #ea580c;
+            --zone-c: #16a34a;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--neige);
+            color: var(--texte);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* ==================== NAVIGATION ==================== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+        
+        .nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+            padding: 0.75rem 2rem;
+        }
+        
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--neige);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            transition: color 0.3s;
+        }
+        
+        .nav.scrolled .nav-logo {
+            color: var(--texte);
+        }
+        
+        .nav-logo span {
+            color: var(--or-doux);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav.scrolled .nav-links a {
+            color: var(--texte-doux);
+        }
+        
+        .nav-links a:hover {
+            color: var(--or-doux);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+        
+        /* ==================== HERO ==================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(44, 83, 100, 0.9) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(201, 162, 39, 0.15) 0%, transparent 40%),
+                linear-gradient(180deg, var(--lac-profond) 0%, var(--lac-moyen) 60%, var(--lac-clair) 100%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        .hero-text {
+            color: var(--neige);
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--or-clair);
+            margin-bottom: 1.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 2rem;
+        }
+        
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(0.9); }
+        }
+        
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero h1 em {
+            color: var(--or-clair);
+            font-style: italic;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.125rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+        
+        @media (max-width: 968px) {
+            .hero-subtitle {
+                margin: 0 auto 2rem;
+            }
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 968px) {
+            .hero-stats {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+        }
+        
+        .hero-stat {
+            text-align: left;
+        }
+        
+        @media (max-width: 968px) {
+            .hero-stat {
+                text-align: center;
+            }
+        }
+        
+        .hero-stat-value {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--or-clair);
+            line-height: 1;
+        }
+        
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.25rem;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 968px) {
+            .hero-cta {
+                justify-content: center;
+            }
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s var(--ease-out-expo);
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--or-doux);
+            color: var(--lac-profond);
+        }
+        
+        .btn-primary:hover {
+            background: var(--or-clair);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(201, 162, 39, 0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--neige);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Hero Card - Carte des zones */
+        .hero-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero-card-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--neige);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .hero-card-title::before {
+            content: '📍';
+        }
+        
+        /* Mini carte stylisée */
+        .zone-map {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .zone-map-visual {
+            width: 100%;
+            max-width: 250px;
+            position: relative;
+        }
+        
+        .zone-map-lake {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(180deg, rgba(44, 83, 100, 0.6) 0%, rgba(32, 58, 67, 0.8) 100%);
+            border-radius: 50% 50% 45% 45%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .zone-map-lake::before {
+            content: 'Lac d\'Annecy';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .zone-marker {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s var(--ease-out-expo);
+        }
+        
+        .zone-marker:hover {
+            transform: scale(1.15);
+        }
+        
+        .zone-a-marker {
+            background: var(--zone-a);
+            top: 60%;
+            left: 40%;
+        }
+        
+        .zone-b-marker {
+            background: var(--zone-b);
+            top: 30%;
+            left: 55%;
+        }
+        
+        .zone-c-marker {
+            background: var(--zone-c);
+            top: 70%;
+            left: 70%;
+        }
+        
+        .zone-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .zone-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 0.5rem;
+            transition: background 0.3s;
+        }
+        
+        .zone-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+        
+        .zone-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .zone-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .zone-dot.a { background: var(--zone-a); }
+        .zone-dot.b { background: var(--zone-b); }
+        .zone-dot.c { background: var(--zone-c); }
+        
+        .zone-name {
+            font-size: 0.85rem;
+            color: var(--neige);
+        }
+        
+        .zone-detail {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .zone-quota {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--or-clair);
+        }
+        
+        /* ==================== SECTION CHIFFRES ==================== */
+        .section {
+            padding: 6rem 2rem;
+        }
+        
+        .section-dark {
+            background: var(--texte);
+            color: var(--neige);
+        }
+        
+        .section-light {
+            background: var(--brume);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--or-doux);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--texte-doux);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .section-dark .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        @media (max-width: 968px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .stat-card {
+            background: var(--neige);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.3s var(--ease-out-expo);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--lac-moyen);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--texte-doux);
+            font-weight: 500;
+        }
+        
+        .stat-source {
+            font-size: 0.7rem;
+            color: var(--texte-muted);
+            margin-top: 0.75rem;
+        }
+        
+        /* ==================== PARCOURS ==================== */
+        .parcours-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        @media (max-width: 968px) {
+            .parcours-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .parcours-card {
+            background: var(--neige);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.4s var(--ease-out-expo);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .parcours-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--or-doux), var(--or-clair));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s var(--ease-out-expo);
+        }
+        
+        .parcours-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .parcours-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .parcours-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .parcours-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: var(--texte);
+        }
+        
+        .parcours-desc {
+            font-size: 0.95rem;
+            color: var(--texte-doux);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .parcours-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .parcours-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--lac-clair);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .parcours-link:hover {
+            color: var(--or-doux);
+        }
+        
+        .parcours-link::before {
+            content: '→';
+            transition: transform 0.3s;
+        }
+        
+        .parcours-link:hover::before {
+            transform: translateX(4px);
+        }
+        
+        /* ==================== ALERTE RÉGLEMENTATION ==================== */
+        .alert-banner {
+            background: linear-gradient(135deg, var(--zone-a) 0%, #991b1b 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            text-align: center;
+            flex-wrap: wrap;
+        }
+        
+        .alert-icon {
+            font-size: 1.5rem;
+        }
+        
+        .alert-text {
+            font-size: 0.95rem;
+        }
+        
+        .alert-text strong {
+            font-weight: 600;
+        }
+        
+        .alert-link {
+            color: white;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--lac-profond);
+            color: var(--neige);
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        @media (max-width: 968px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-brand span {
+            color: var(--or-doux);
+        }
+        
+        .footer-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--or-doux);
+            padding: 0.5rem 1rem;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 2rem;
+        }
+        
+        .footer-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .footer-links a {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--or-doux);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+        
+        .footer-bottom a:hover {
+            color: var(--or-doux);
+        }
+        
+        /* ==================== ANIMATIONS ==================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s var(--ease-out-expo);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Animation staggered pour les grilles */
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="index.html" class="nav-logo">bnb<span>·</span>annecy</a>
+        <ul class="nav-links">
+            <li><a href="reglementation-2026.html">Réglementation</a></li>
+            <li><a href="rentabilite-airbnb-annecy.html">Rentabilité</a></li>
+            <li><a href="fiscalite-lmnp-annecy.html">Fiscalité</a></li>
+            <li><a href="radar-biens.html">Radar Biens</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">Mise à jour mars 2026</div>
+                
+                <h1>La location courte durée à <em>Annecy</em>, enfin expliquée</h1>
+                
+                <p class="hero-subtitle">
+                    Réglementation durcie depuis juin 2025, quotas par zone, fiscalité LMNP — 
+                    on décrypte tout pour que vous preniez les bonnes décisions.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">2 660</div>
+                        <div class="hero-stat-label">Quotas Annecy</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">63%</div>
+                        <div class="hero-stat-label">Taux occupation</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">24k€</div>
+                        <div class="hero-stat-label">Revenus/an</div>
+                    </div>
+                </div>
+                
+                <div class="hero-cta">
+                    <a href="reglementation-2026.html" class="btn btn-primary">
+                        Comprendre la réglementation →
+                    </a>
+                    <a href="rentabilite-airbnb-annecy.html" class="btn btn-secondary">
+                        Voir les données rentabilité
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-card">
+                <h3 class="hero-card-title">Zones à quotas — Annecy</h3>
+                
+                <div class="zone-map">
+                    <div class="zone-map-visual">
+                        <div class="zone-map-lake">
+                            <div class="zone-marker zone-a-marker">A</div>
+                            <div class="zone-marker zone-b-marker">B</div>
+                            <div class="zone-marker zone-c-marker">C</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="zone-legend">
+                    <div class="zone-item">
+                        <div class="zone-info">
+                            <span class="zone-dot a"></span>
+                            <div>
+                                <div class="zone-name">Zone A</div>
+                                <div class="zone-detail">Vieille ville, Marquisats</div>
+                            </div>
+                        </div>
+                        <div class="zone-quota">460</div>
+                    </div>
+                    
+                    <div class="zone-item">
+                        <div class="zone-info">
+                            <span class="zone-dot b"></span>
+                            <div>
+                                <div class="zone-name">Zone B</div>
+                                <div class="zone-detail">Bords du lac, Gare</div>
+                            </div>
+                        </div>
+                        <div class="zone-quota">1 000</div>
+                    </div>
+                    
+                    <div class="zone-item">
+                        <div class="zone-info">
+                            <span class="zone-dot c"></span>
+                            <div>
+                                <div class="zone-name">Zone C</div>
+                                <div class="zone-detail">Reste de la commune</div>
+                            </div>
+                        </div>
+                        <div class="zone-quota">1 200</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Alerte réglementation -->
+    <div class="alert-banner">
+        <span class="alert-icon">⚠️</span>
+        <p class="alert-text">
+            <strong>Depuis le 1er juin 2025</strong>, toute location en meublé de tourisme nécessite une autorisation. 
+            Amende sans autorisation : <strong>100 000€</strong>.
+            <a href="reglementation-2026.html" class="alert-link">Lire le guide complet →</a>
+        </p>
+    </div>
+    
+    <!-- Section Chiffres -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-eyebrow">Données locales</p>
+                <h2 class="section-title">Le marché Annecy en chiffres</h2>
+                <p class="section-subtitle">
+                    3ème destination touristique de France, entre lac et montagne. 
+                    Un marché tendu avec une réglementation stricte.
+                </p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card fade-in stagger-1">
+                    <div class="stat-icon">🏠</div>
+                    <div class="stat-value">~4 000</div>
+                    <div class="stat-label">Logements Airbnb actifs</div>
+                    <div class="stat-source">Grand Annecy</div>
+                </div>
+                
+                <div class="stat-card fade-in stagger-2">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-value">63%</div>
+                    <div class="stat-label">Taux d'occupation moyen</div>
+                    <div class="stat-source">AirDNA 2025</div>
+                </div>
+                
+                <div class="stat-card fade-in stagger-3">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-value">1 992€</div>
+                    <div class="stat-label">Revenus mensuels moyens</div>
+                    <div class="stat-source">AirDNA 2025</div>
+                </div>
+                
+                <div class="stat-card fade-in stagger-4">
+                    <div class="stat-icon">🌡️</div>
+                    <div class="stat-value">90%</div>
+                    <div class="stat-label">Occupation haute saison</div>
+                    <div class="stat-source">Juin-Septembre</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section Parcours -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-eyebrow">Guides</p>
+                <h2 class="section-title">Quel est votre projet ?</h2>
+                <p class="section-subtitle">
+                    Chaque situation est différente. On vous guide vers les bonnes ressources.
+                </p>
+            </div>
+            
+            <div class="parcours-grid">
+                <a href="reglementation-2026.html" class="parcours-card fade-in stagger-1">
+                    <div class="parcours-icon">📋</div>
+                    <h3 class="parcours-title">Je veux me lancer</h3>
+                    <p class="parcours-desc">
+                        Comprendre les démarches obligatoires, les quotas, l'enregistrement DéclaLoc 
+                        et les sanctions en cas de non-conformité.
+                    </p>
+                    <div class="parcours-links">
+                        <span class="parcours-link">Guide réglementation 2026</span>
+                        <span class="parcours-link">Les 34 communes concernées</span>
+                        <span class="parcours-link">Checklist DéclaLoc</span>
+                    </div>
+                </a>
+                
+                <a href="rentabilite-airbnb-annecy.html" class="parcours-card fade-in stagger-2">
+                    <div class="parcours-icon">🎯</div>
+                    <h3 class="parcours-title">Je veux investir</h3>
+                    <p class="parcours-desc">
+                        Revenus moyens par quartier, taux d'occupation par saison, 
+                        exemple de calcul de rentabilité sur un T2.
+                    </p>
+                    <div class="parcours-links">
+                        <span class="parcours-link">Données rentabilité</span>
+                        <span class="parcours-link">Calendrier saisonnalité</span>
+                        <span class="parcours-link">Radar biens à vendre</span>
+                    </div>
+                </a>
+                
+                <a href="fiscalite-lmnp-annecy.html" class="parcours-card fade-in stagger-3">
+                    <div class="parcours-icon">📊</div>
+                    <h3 class="parcours-title">Je veux optimiser</h3>
+                    <p class="parcours-desc">
+                        Micro-BIC vs Régime réel, amortissements, exemple chiffré 
+                        sur un bien à Annecy. Quand prendre un comptable ?
+                    </p>
+                    <div class="parcours-links">
+                        <span class="parcours-link">Guide fiscalité LMNP</span>
+                        <span class="parcours-link">Comparatif régimes</span>
+                        <span class="parcours-link">Exemple chiffré</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <div class="footer-brand">bnb<span>·</span>annecy</div>
+                <p class="footer-desc">
+                    Le guide de référence pour la location courte durée à Annecy. 
+                    Réglementation, rentabilité, fiscalité — tout est là.
+                </p>
+                <div class="footer-badge">
+                    <span>✓</span> Sources officielles uniquement
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="footer-title">Guides</h4>
+                <ul class="footer-links">
+                    <li><a href="reglementation-2026.html">Réglementation 2026</a></li>
+                    <li><a href="rentabilite-airbnb-annecy.html">Rentabilité Airbnb</a></li>
+                    <li><a href="fiscalite-lmnp-annecy.html">Fiscalité LMNP</a></li>
+                    <li><a href="radar-biens.html">Radar Biens</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="footer-title">Ressources</h4>
+                <ul class="footer-links">
+                    <li><a href="https://grandannecy.declaloc.fr" target="_blank" rel="noopener">DéclaLoc ↗</a></li>
+                    <li><a href="https://www.grandannecy.fr" target="_blank" rel="noopener">Grand Annecy ↗</a></li>
+                    <li><a href="https://www.impots.gouv.fr" target="_blank" rel="noopener">Impots.gouv.fr ↗</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="footer-title">Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:contact@bnb-annecy.com">contact@bnb-annecy.com</a></li>
+                    <li><a href="https://leman-digital-asset.com" target="_blank" rel="noopener">Leman Digital Asset ↗</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <span>© 2026 BNB Annecy · Un projet <a href="https://leman-digital-asset.com">Leman Digital Asset</a></span>
+            <span>Données mises à jour : mars 2026</span>
+        </div>
+    </footer>
+    
+    <script>
+        // Navigation scroll
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+        
+        // Fade in on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

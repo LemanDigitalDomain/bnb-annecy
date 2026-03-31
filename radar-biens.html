@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar Biens Annecy — Biens à Vendre avec Potentiel Airbnb | BNB Annecy</title>
+    <meta name="description" content="Identifiez les biens en vente à Annecy avec le meilleur potentiel de rentabilité en location courte durée. Alertes personnalisées et analyse de rentabilité.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --lac-profond: #0f2027;
+            --lac-moyen: #203a43;
+            --lac-clair: #2c5364;
+            --or-doux: #c9a227;
+            --or-clair: #f4d35e;
+            --or-pale: #fef3c7;
+            --neige: #fafbfc;
+            --brume: #f1f5f9;
+            --texte: #0f172a;
+            --texte-doux: #475569;
+            --texte-muted: #94a3b8;
+            --success: #22c55e;
+            --success-bg: #dcfce7;
+            --warning: #f59e0b;
+            --zone-a: #dc2626;
+            --zone-b: #ea580c;
+            --zone-c: #16a34a;
+            
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--neige);
+            color: var(--texte);
+            line-height: 1.7;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--texte);
+            text-decoration: none;
+        }
+        
+        .nav-logo span {
+            color: var(--or-doux);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--texte-doux);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--or-doux);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            background: linear-gradient(180deg, var(--lac-profond) 0%, var(--lac-moyen) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(201, 162, 39, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(44, 83, 100, 0.3) 0%, transparent 50%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--or-clair);
+            padding: 0.5rem 1rem;
+            background: rgba(201, 162, 39, 0.15);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--or-clair);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+        
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero h1 em {
+            color: var(--or-clair);
+            font-style: italic;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+        
+        /* Coming Soon Box */
+        .coming-soon {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .coming-soon-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .coming-soon h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .coming-soon p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+        }
+        
+        /* Form */
+        .alert-form {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 500px) {
+            .alert-form {
+                flex-direction: column;
+            }
+        }
+        
+        .alert-form input {
+            flex: 1;
+            padding: 1rem 1.25rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .alert-form input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .alert-form input:focus {
+            border-color: var(--or-doux);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .alert-form button {
+            padding: 1rem 2rem;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: var(--or-doux);
+            color: var(--lac-profond);
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-out-expo);
+            white-space: nowrap;
+        }
+        
+        .alert-form button:hover {
+            background: var(--or-clair);
+            transform: translateY(-2px);
+        }
+        
+        .form-note {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 1rem;
+        }
+        
+        /* Features */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--neige);
+        }
+        
+        .features-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .features-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .features-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--or-doux);
+            margin-bottom: 1rem;
+        }
+        
+        .features-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        
+        .features-subtitle {
+            font-size: 1.1rem;
+            color: var(--texte-doux);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        @media (max-width: 800px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s var(--ease-out-expo);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        
+        .feature-desc {
+            font-size: 0.95rem;
+            color: var(--texte-doux);
+            line-height: 1.6;
+        }
+        
+        /* Preview Section */
+        .preview {
+            padding: 6rem 2rem;
+            background: var(--brume);
+        }
+        
+        .preview-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .preview-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .preview-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .preview-subtitle {
+            font-size: 1rem;
+            color: var(--texte-doux);
+        }
+        
+        /* Fake property cards */
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        @media (max-width: 900px) {
+            .property-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .property-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .property-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            position: relative;
+            filter: blur(3px);
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        .property-image {
+            height: 160px;
+            background: linear-gradient(135deg, var(--brume) 0%, #dde3e9 100%);
+            position: relative;
+        }
+        
+        .property-zone {
+            position: absolute;
+            top: 0.75rem;
+            left: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: white;
+            text-transform: uppercase;
+        }
+        
+        .property-zone.zone-a { background: var(--zone-a); }
+        .property-zone.zone-b { background: var(--zone-b); }
+        .property-zone.zone-c { background: var(--zone-c); }
+        
+        .property-score {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: var(--success);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        
+        .property-content {
+            padding: 1.25rem;
+        }
+        
+        .property-type {
+            font-size: 0.75rem;
+            color: var(--texte-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+        
+        .property-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .property-location {
+            font-size: 0.85rem;
+            color: var(--texte-doux);
+            margin-bottom: 1rem;
+        }
+        
+        .property-stats {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid var(--brume);
+        }
+        
+        .property-stat {
+            text-align: center;
+        }
+        
+        .property-stat-value {
+            font-weight: 600;
+            color: var(--lac-moyen);
+        }
+        
+        .property-stat-label {
+            font-size: 0.7rem;
+            color: var(--texte-muted);
+        }
+        
+        /* Overlay */
+        .preview-overlay {
+            position: relative;
+            margin-top: -100px;
+            padding-top: 100px;
+            background: linear-gradient(180deg, transparent 0%, var(--brume) 50%);
+            text-align: center;
+            padding-bottom: 2rem;
+        }
+        
+        .preview-cta {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            display: inline-block;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .preview-cta p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .preview-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--lac-profond);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .preview-cta a:hover {
+            background: var(--lac-moyen);
+        }
+        
+        /* How it works */
+        .how-it-works {
+            padding: 6rem 2rem;
+            background: white;
+        }
+        
+        .how-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .how-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .how-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .how-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        @media (max-width: 800px) {
+            .how-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .how-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .how-step {
+            text-align: center;
+        }
+        
+        .how-step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--or-pale);
+            color: var(--or-doux);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0 auto 1rem;
+        }
+        
+        .how-step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .how-step-desc {
+            font-size: 0.9rem;
+            color: var(--texte-doux);
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--lac-profond) 0%, var(--lac-moyen) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .final-cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .final-cta h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .final-cta p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--lac-profond);
+            color: var(--neige);
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-brand span {
+            color: var(--or-doux);
+        }
+        
+        .footer-text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .footer-text a {
+            color: var(--or-doux);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">bnb<span>·</span>annecy</a>
+        <ul class="nav-links">
+            <li><a href="reglementation-2026.html">Réglementation</a></li>
+            <li><a href="rentabilite-airbnb-annecy.html">Rentabilité</a></li>
+            <li><a href="fiscalite-lmnp-annecy.html">Fiscalité</a></li>
+            <li><a href="radar-biens.html" class="active">Radar Biens</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">Bientôt disponible</span>
+            
+            <h1>Trouvez les biens avec le meilleur potentiel <em>Airbnb</em></h1>
+            
+            <p class="hero-subtitle">
+                Notre radar analyse les biens en vente à Annecy et identifie ceux 
+                avec le meilleur potentiel de rentabilité en location courte durée.
+            </p>
+            
+            <div class="coming-soon">
+                <div class="coming-soon-icon">🎯</div>
+                <h2>Soyez alerté en avant-première</h2>
+                <p>
+                    Inscrivez-vous pour recevoir les premières analyses et être notifié 
+                    dès qu'un bien correspondant à vos critères arrive sur le marché.
+                </p>
+                
+                <form class="alert-form" onsubmit="handleSubmit(event)">
+                    <input type="email" placeholder="votre@email.com" required>
+                    <button type="submit">M'alerter →</button>
+                </form>
+                
+                <p class="form-note">Gratuit · Pas de spam · Désinscription en 1 clic</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features -->
+    <section class="features">
+        <div class="features-container">
+            <div class="features-header">
+                <p class="features-eyebrow">Fonctionnalités</p>
+                <h2 class="features-title">Ce que le Radar va vous apporter</h2>
+                <p class="features-subtitle">
+                    Un outil conçu pour les investisseurs qui veulent identifier 
+                    les meilleures opportunités du marché annécien.
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Score de rentabilité</h3>
+                    <p class="feature-desc">
+                        Chaque bien analysé reçoit un score basé sur son potentiel 
+                        de revenus Airbnb, sa localisation et les données du marché.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3 class="feature-title">Filtres par zone</h3>
+                    <p class="feature-desc">
+                        Filtrez les biens par zone de quotas (A, B, C), 
+                        par commune, par type de bien et par budget.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3 class="feature-title">Alertes instantanées</h3>
+                    <p class="feature-desc">
+                        Recevez une notification dès qu'un bien correspondant 
+                        à vos critères apparaît sur le marché.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Preview -->
+    <section class="preview">
+        <div class="preview-container">
+            <div class="preview-header">
+                <h2 class="preview-title">Aperçu du Radar</h2>
+                <p class="preview-subtitle">Voici à quoi ressemblera l'interface de recherche</p>
+            </div>
+            
+            <div class="property-grid">
+                <div class="property-card">
+                    <div class="property-image">
+                        <span class="property-zone zone-b">Zone B</span>
+                        <span class="property-score">8.4</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">T2 · 42m²</div>
+                        <div class="property-title">Appartement vue lac</div>
+                        <div class="property-location">📍 Annecy-le-Vieux</div>
+                        <div class="property-stats">
+                            <div class="property-stat">
+                                <div class="property-stat-value">285 000€</div>
+                                <div class="property-stat-label">Prix</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-value">~22k€/an</div>
+                                <div class="property-stat-label">Potentiel</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-value">7.7%</div>
+                                <div class="property-stat-label">Renta.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-image">
+                        <span class="property-zone zone-a">Zone A</span>
+                        <span class="property-score">9.1</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">Studio · 28m²</div>
+                        <div class="property-title">Vieille ville, charme</div>
+                        <div class="property-location">📍 Annecy centre</div>
+                        <div class="property-stats">
+                            <div class="property-stat">
+                                <div class="property-stat-value">195 000€</div>
+                                <div class="property-stat-label">Prix</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-value">~18k€/an</div>
+                                <div class="property-stat-label">Potentiel</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-value">9.2%</div>
+                                <div class="property-stat-label">Renta.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-image">
+                        <span class="property-zone zone-c">Zone C</span>
+                        <span class="property-score">7.8</span>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-type">T3 · 65m²</div>
+                        <div class="property-title">Proche centre, parking</div>
+                        <div class="property-location">📍 Seynod</div>
+                        <div class="property-stats">
+                            <div class="property-stat">
+                                <div class="property-stat-value">320 000€</div>
+                                <div class="property-stat-label">Prix</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-value">~26k€/an</div>
+                                <div class="property-stat-label">Potentiel</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-value">8.1%</div>
+                                <div class="property-stat-label">Renta.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="preview-overlay">
+                <div class="preview-cta">
+                    <p>🔒 Accès réservé aux membres inscrits</p>
+                    <a href="#hero">S'inscrire gratuitement →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How it works -->
+    <section class="how-it-works">
+        <div class="how-container">
+            <div class="how-header">
+                <h2 class="how-title">Comment ça fonctionne</h2>
+            </div>
+            
+            <div class="how-steps">
+                <div class="how-step">
+                    <div class="how-step-number">1</div>
+                    <h3 class="how-step-title">Scan quotidien</h3>
+                    <p class="how-step-desc">
+                        Notre système scanne les annonces immobilières chaque jour
+                    </p>
+                </div>
+                
+                <div class="how-step">
+                    <div class="how-step-number">2</div>
+                    <h3 class="how-step-title">Analyse BNB</h3>
+                    <p class="how-step-desc">
+                        Chaque bien est analysé selon son potentiel de rentabilité
+                    </p>
+                </div>
+                
+                <div class="how-step">
+                    <div class="how-step-number">3</div>
+                    <h3 class="how-step-title">Scoring</h3>
+                    <p class="how-step-desc">
+                        Un score de 1 à 10 est attribué selon nos critères
+                    </p>
+                </div>
+                
+                <div class="how-step">
+                    <div class="how-step-number">4</div>
+                    <h3 class="how-step-title">Alerte</h3>
+                    <p class="how-step-desc">
+                        Vous êtes notifié dès qu'un bien matche vos critères
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="final-cta-content">
+            <h2>Ne ratez pas les meilleures opportunités</h2>
+            <p>
+                Les biens avec le meilleur potentiel Airbnb partent vite. 
+                Inscrivez-vous pour être alerté avant tout le monde.
+            </p>
+            
+            <form class="alert-form" onsubmit="handleSubmit(event)">
+                <input type="email" placeholder="votre@email.com" required>
+                <button type="submit">Recevoir les alertes →</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-brand">bnb<span>·</span>annecy</p>
+            <p class="footer-text">
+                © 2026 · Un projet <a href="https://leman-digital-asset.com">Leman Digital Asset</a>
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const email = e.target.querySelector('input').value;
+            // Ici on pourrait envoyer à Supabase ou autre
+            alert('Merci ! Vous serez notifié dès que le Radar sera disponible.');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>

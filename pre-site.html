@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BNB Annecy — Le guide de la location courte durée à Annecy</title>
+    <meta name="description" content="Réglementation, rentabilité, fiscalité : tout ce qu'il faut savoir pour louer en Airbnb à Annecy en 2026. Guide complet et données locales exclusives.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --lac-profond: #0f2027;
+            --lac-moyen: #203a43;
+            --lac-clair: #2c5364;
+            --or-doux: #c9a227;
+            --or-clair: #f4d35e;
+            --neige: #fafbfc;
+            --brume: #e8eef2;
+            --texte: #1a1a2e;
+            --texte-doux: #4a5568;
+            
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--lac-profond);
+            color: var(--neige);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Background animé */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(44, 83, 100, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(201, 162, 39, 0.1) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 50%, rgba(32, 58, 67, 0.6) 0%, transparent 70%),
+                linear-gradient(180deg, var(--lac-profond) 0%, var(--lac-moyen) 100%);
+            z-index: -2;
+        }
+        
+        /* Texture grain subtile */
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: -1;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+        
+        /* Container principal */
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        /* Header minimal */
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0;
+            animation: fadeIn 1s var(--ease-out-expo) 0.2s forwards;
+        }
+        
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--neige);
+        }
+        
+        .logo span {
+            color: var(--or-doux);
+        }
+        
+        .badge-2026 {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--or-doux);
+            padding: 0.4rem 0.8rem;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 2rem;
+        }
+        
+        /* Contenu central */
+        .content {
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+        }
+        
+        .eyebrow {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--or-doux);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--ease-out-expo) 0.4s forwards;
+        }
+        
+        h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--ease-out-expo) 0.5s forwards;
+        }
+        
+        h1 .highlight {
+            color: var(--or-clair);
+            font-style: italic;
+        }
+        
+        .subtitle {
+            font-size: 1.125rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--ease-out-expo) 0.6s forwards;
+        }
+        
+        /* Question de qualification */
+        .question {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--ease-out-expo) 0.7s forwards;
+        }
+        
+        /* Grille des profils */
+        .profiles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--ease-out-expo) 0.8s forwards;
+        }
+        
+        @media (max-width: 768px) {
+            .profiles {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .profiles {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .profile-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            padding: 1.75rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s var(--ease-out-expo);
+        }
+        
+        .profile-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(201, 162, 39, 0.3);
+            transform: translateY(-4px);
+        }
+        
+        .profile-card:hover::before {
+            opacity: 1;
+        }
+        
+        .profile-card:hover .profile-icon {
+            transform: scale(1.1);
+            color: var(--or-clair);
+        }
+        
+        .profile-card:hover .profile-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .profile-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+        
+        .profile-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-arrow {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.25rem;
+            color: var(--or-doux);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.4s var(--ease-out-expo);
+        }
+        
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+            opacity: 0;
+            animation: fadeIn 1s var(--ease-out-expo) 1s forwards;
+        }
+        
+        .footer a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: var(--or-doux);
+        }
+        
+        .data-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .data-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* Ligne décorative */
+        .deco-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--or-doux), transparent);
+            margin: 0 auto 2rem;
+            opacity: 0;
+            animation: fadeIn 1s var(--ease-out-expo) 0.65s forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    <div class="grain"></div>
+    
+    <header class="header">
+        <div class="logo">bnb<span>·</span>annecy</div>
+        <div class="badge-2026">Données 2026</div>
+    </header>
+    
+    <main class="container">
+        <div class="content">
+            <p class="eyebrow">Guide complet · Données locales exclusives</p>
+            
+            <h1>Location courte durée<br>à <span class="highlight">Annecy</span></h1>
+            
+            <p class="subtitle">
+                Réglementation durcie, quotas par zone, fiscalité LMNP — 
+                tout ce qu'il faut savoir avant de louer ou d'investir.
+            </p>
+            
+            <div class="deco-line"></div>
+            
+            <p class="question">Pour personnaliser votre expérience, vous êtes…</p>
+            
+            <div class="profiles">
+                <a href="index.html?profil=debutant" class="profile-card">
+                    <span class="profile-icon">🏠</span>
+                    <span class="profile-arrow">→</span>
+                    <h3 class="profile-title">Propriétaire débutant</h3>
+                    <p class="profile-desc">Je veux louer mon bien en courte durée</p>
+                </a>
+                
+                <a href="index.html?profil=actif" class="profile-card">
+                    <span class="profile-icon">📈</span>
+                    <span class="profile-arrow">→</span>
+                    <h3 class="profile-title">Propriétaire actif</h3>
+                    <p class="profile-desc">Je loue déjà, je veux optimiser</p>
+                </a>
+                
+                <a href="index.html?profil=investisseur" class="profile-card">
+                    <span class="profile-icon">🎯</span>
+                    <span class="profile-arrow">→</span>
+                    <h3 class="profile-title">Investisseur</h3>
+                    <p class="profile-desc">Je cherche un bien à acheter pour louer</p>
+                </a>
+                
+                <a href="index.html?profil=vendeur" class="profile-card">
+                    <span class="profile-icon">🔑</span>
+                    <span class="profile-arrow">→</span>
+                    <h3 class="profile-title">Vendeur</h3>
+                    <p class="profile-desc">Je veux valoriser mon bien grâce au potentiel BNB</p>
+                </a>
+                
+                <a href="index.html?profil=indecis" class="profile-card">
+                    <span class="profile-icon">🤔</span>
+                    <span class="profile-arrow">→</span>
+                    <h3 class="profile-title">Héritier · Indécis</h3>
+                    <p class="profile-desc">J'ai un bien, j'hésite sur quoi en faire</p>
+                </a>
+                
+                <a href="index.html?profil=pro" class="profile-card">
+                    <span class="profile-icon">💼</span>
+                    <span class="profile-arrow">→</span>
+                    <h3 class="profile-title">Professionnel</h3>
+                    <p class="profile-desc">Conciergerie, comptable, chasseur, artisan…</p>
+                </a>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <span>© 2026 BNB Annecy · Un projet <a href="https://leman-digital-asset.com" target="_blank">Leman Digital Asset</a></span>
+        <span class="data-badge">Données mises à jour mars 2026</span>
+    </footer>
+    
+    <script>
+        // Stocker le profil sélectionné
+        document.querySelectorAll('.profile-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                const url = new URL(this.href);
+                const profil = url.searchParams.get('profil');
+                if (profil) {
+                    localStorage.setItem('bnb_annecy_profil', profil);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

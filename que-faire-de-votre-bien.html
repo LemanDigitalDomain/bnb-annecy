@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Que Faire de Votre Bien à Annecy — Vendre, Louer ou Airbnb ? | BNB Annecy</title>
+    <meta name="description" content="Vous avez hérité d'un bien ou hésitez sur quoi en faire ? Comparatif Vendre vs Location classique vs Airbnb à Annecy. Guide de décision personnalisé.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --lac-profond: #0f2027;
+            --lac-moyen: #203a43;
+            --lac-clair: #2c5364;
+            --or-doux: #c9a227;
+            --or-clair: #f4d35e;
+            --or-pale: #fef3c7;
+            --neige: #fafbfc;
+            --brume: #f1f5f9;
+            --texte: #0f172a;
+            --texte-doux: #475569;
+            --texte-muted: #94a3b8;
+            --success: #22c55e;
+            --success-bg: #dcfce7;
+            --warning: #f59e0b;
+            --warning-bg: #fef3c7;
+            --info: #3b82f6;
+            --info-bg: #dbeafe;
+            
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--neige);
+            color: var(--texte);
+            line-height: 1.7;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--texte);
+            text-decoration: none;
+        }
+        
+        .nav-logo span {
+            color: var(--or-doux);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--texte-doux);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--or-doux);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            background: linear-gradient(180deg, var(--brume) 0%, var(--neige) 100%);
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--info);
+            padding: 0.5rem 1rem;
+            background: var(--info-bg);
+            border-radius: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero h1 em {
+            color: var(--lac-clair);
+            font-style: italic;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--texte-doux);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Section */
+        .section {
+            padding: 6rem 2rem;
+        }
+        
+        .section-light {
+            background: white;
+        }
+        
+        .section-gray {
+            background: var(--brume);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--or-doux);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--texte-doux);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Decision Tree */
+        .decision-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .decision-intro p {
+            font-size: 1.1rem;
+            color: var(--texte-doux);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Options Grid */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        @media (max-width: 900px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .option-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 2px solid transparent;
+            transition: all 0.4s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+        
+        .option-card.sell::before { background: var(--warning); }
+        .option-card.rent::before { background: var(--info); }
+        .option-card.bnb::before { background: var(--success); }
+        
+        .option-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .option-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .option-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .option-tagline {
+            font-size: 0.9rem;
+            color: var(--texte-muted);
+            margin-bottom: 1.5rem;
+        }
+        
+        .option-stats {
+            background: var(--brume);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .option-stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .option-stat:not(:last-child) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .option-stat-label {
+            color: var(--texte-doux);
+        }
+        
+        .option-stat-value {
+            font-weight: 600;
+        }
+        
+        .option-pros, .option-cons {
+            margin-bottom: 1rem;
+        }
+        
+        .option-pros h4, .option-cons h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+        }
+        
+        .option-pros h4 { color: var(--success); }
+        .option-cons h4 { color: var(--warning); }
+        
+        .option-list {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+        
+        .option-list li {
+            padding: 0.35rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .option-list li::before {
+            position: absolute;
+            left: 0;
+        }
+        
+        .option-pros .option-list li::before { content: '✓'; color: var(--success); }
+        .option-cons .option-list li::before { content: '–'; color: var(--warning); }
+        
+        .option-best-for {
+            background: var(--or-pale);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .option-best-for h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--or-doux);
+            margin-bottom: 0.5rem;
+        }
+        
+        .option-best-for p {
+            font-size: 0.85rem;
+            color: var(--texte-doux);
+            margin: 0;
+        }
+        
+        /* Comparison Table */
+        .compare-table-wrapper {
+            overflow-x: auto;
+            margin: 3rem 0;
+            border-radius: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            background: white;
+        }
+        
+        .compare-table thead {
+            background: var(--lac-profond);
+            color: white;
+        }
+        
+        .compare-table th {
+            padding: 1.25rem 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .compare-table th:first-child {
+            border-radius: 1rem 0 0 0;
+        }
+        
+        .compare-table th:last-child {
+            border-radius: 0 1rem 0 0;
+        }
+        
+        .compare-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--brume);
+        }
+        
+        .compare-table tbody tr:hover {
+            background: var(--brume);
+        }
+        
+        .compare-table .highlight {
+            background: var(--success-bg);
+            font-weight: 600;
+        }
+        
+        /* Quiz Section */
+        .quiz-box {
+            background: linear-gradient(135deg, var(--lac-profond) 0%, var(--lac-moyen) 100%);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .quiz-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-title {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .quiz-text {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .quiz-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--or-doux);
+            color: var(--lac-profond);
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s var(--ease-out-expo);
+        }
+        
+        .quiz-btn:hover {
+            background: var(--or-clair);
+            transform: translateY(-2px);
+        }
+        
+        /* Situations */
+        .situations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        @media (max-width: 700px) {
+            .situations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .situation-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .situation-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .situation-text {
+            font-size: 0.9rem;
+            color: var(--texte-doux);
+            margin-bottom: 0.75rem;
+        }
+        
+        .situation-verdict {
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            display: inline-block;
+        }
+        
+        .situation-verdict.sell {
+            background: var(--warning-bg);
+            color: #92400e;
+        }
+        
+        .situation-verdict.rent {
+            background: var(--info-bg);
+            color: #1e40af;
+        }
+        
+        .situation-verdict.bnb {
+            background: var(--success-bg);
+            color: #166534;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--lac-profond);
+            color: var(--neige);
+            padding: 3rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-brand span {
+            color: var(--or-doux);
+        }
+        
+        .footer-text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .footer-text a {
+            color: var(--or-doux);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">bnb<span>·</span>annecy</a>
+        <ul class="nav-links">
+            <li><a href="reglementation-2026.html">Réglementation</a></li>
+            <li><a href="rentabilite-airbnb-annecy.html">Rentabilité</a></li>
+            <li><a href="fiscalite-lmnp-annecy.html">Fiscalité</a></li>
+            <li><a href="radar-biens.html">Radar Biens</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">🤔 Guide de décision</span>
+            
+            <h1>Que faire de votre bien à <em>Annecy</em> ?</h1>
+            
+            <p class="hero-subtitle">
+                Héritage, résidence secondaire peu utilisée, investissement à arbitrer — 
+                on vous aide à choisir entre vendre, louer classique ou Airbnb.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Options Comparison -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-eyebrow">Comparatif</p>
+                <h2 class="section-title">Les 3 options pour votre bien</h2>
+                <p class="section-subtitle">
+                    Chaque option a ses avantages. Le meilleur choix dépend de votre situation personnelle.
+                </p>
+            </div>
+            
+            <div class="options-grid">
+                <!-- Option 1: Vendre -->
+                <div class="option-card sell">
+                    <div class="option-icon">🏷️</div>
+                    <h3 class="option-title">Vendre</h3>
+                    <p class="option-tagline">Récupérer le capital immédiatement</p>
+                    
+                    <div class="option-stats">
+                        <div class="option-stat">
+                            <span class="option-stat-label">Capital libéré</span>
+                            <span class="option-stat-value">280 000€</span>
+                        </div>
+                        <div class="option-stat">
+                            <span class="option-stat-label">Délai moyen</span>
+                            <span class="option-stat-value">3-6 mois</span>
+                        </div>
+                        <div class="option-stat">
+                            <span class="option-stat-label">Frais vente</span>
+                            <span class="option-stat-value">~5%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="option-pros">
+                        <h4>Avantages</h4>
+                        <ul class="option-list">
+                            <li>Capital disponible immédiatement</li>
+                            <li>Plus de gestion, plus de souci</li>
+                            <li>Pas de fiscalité locative</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="option-cons">
+                        <h4>Inconvénients</h4>
+                        <ul class="option-list">
+                            <li>Perte du patrimoine</li>
+                            <li>Plus-value potentielle taxée</li>
+                            <li>Marché peut être défavorable</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="option-best-for">
+                        <h4>Idéal si</h4>
+                        <p>Vous avez besoin de liquidités, habitez loin, ou le bien nécessite de gros travaux.</p>
+                    </div>
+                </div>
+                
+                <!-- Option 2: Location classique -->
+                <div class="option-card rent">
+                    <div class="option-icon">📋</div>
+                    <h3 class="option-title">Location classique</h3>
+                    <p class="option-tagline">Revenus stables, gestion légère</p>
+                    
+                    <div class="option-stats">
+                        <div class="option-stat">
+                            <span class="option-stat-label">Revenus/an</span>
+                            <span class="option-stat-value">~10 800€</span>
+                        </div>
+                        <div class="option-stat">
+                            <span class="option-stat-label">Rentabilité nette</span>
+                            <span class="option-stat-value">~3%</span>
+                        </div>
+                        <div class="option-stat">
+                            <span class="option-stat-label">Gestion</span>
+                            <span class="option-stat-value">Faible</span>
+                        </div>
+                    </div>
+                    
+                    <div class="option-pros">
+                        <h4>Avantages</h4>
+                        <ul class="option-list">
+                            <li>Revenus réguliers et prévisibles</li>
+                            <li>Gestion minimale</li>
+                            <li>Pas d'autorisation spéciale</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="option-cons">
+                        <h4>Inconvénients</h4>
+                        <ul class="option-list">
+                            <li>Rentabilité plus faible</li>
+                            <li>Risque d'impayés</li>
+                            <li>Bail 3 ans, peu flexible</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="option-best-for">
+                        <h4>Idéal si</h4>
+                        <p>Vous cherchez la tranquillité et des revenus stables sans trop vous impliquer.</p>
+                    </div>
+                </div>
+                
+                <!-- Option 3: Airbnb -->
+                <div class="option-card bnb">
+                    <div class="option-icon">🏠</div>
+                    <h3 class="option-title">Location courte durée</h3>
+                    <p class="option-tagline">Revenus optimisés, flexibilité</p>
+                    
+                    <div class="option-stats">
+                        <div class="option-stat">
+                            <span class="option-stat-label">Revenus/an</span>
+                            <span class="option-stat-value">~24 000€</span>
+                        </div>
+                        <div class="option-stat">
+                            <span class="option-stat-label">Rentabilité nette</span>
+                            <span class="option-stat-value">~5%</span>
+                        </div>
+                        <div class="option-stat">
+                            <span class="option-stat-label">Gestion</span>
+                            <span class="option-stat-value">Intensive</span>
+                        </div>
+                    </div>
+                    
+                    <div class="option-pros">
+                        <h4>Avantages</h4>
+                        <ul class="option-list">
+                            <li>Revenus x2 vs location classique</li>
+                            <li>Usage personnel possible</li>
+                            <li>Flexibilité totale</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="option-cons">
+                        <h4>Inconvénients</h4>
+                        <ul class="option-list">
+                            <li>Gestion intensive (ou déléguée)</li>
+                            <li>Autorisation obligatoire (quotas)</li>
+                            <li>Saisonnalité des revenus</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="option-best-for">
+                        <h4>Idéal si</h4>
+                        <p>Vous voulez maximiser les revenus et garder la possibilité d'utiliser le bien.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Comparison Table -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Tableau comparatif détaillé</h2>
+                <p class="section-subtitle">Sur la base d'un T2 de 45m² évalué à 280 000€ à Annecy</p>
+            </div>
+            
+            <div class="compare-table-wrapper">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>Critère</th>
+                            <th>Vendre</th>
+                            <th>Location classique</th>
+                            <th>Airbnb</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Revenus annuels</td>
+                            <td>—</td>
+                            <td>10 800€</td>
+                            <td class="highlight">24 000€</td>
+                        </tr>
+                        <tr>
+                            <td>Capital récupéré</td>
+                            <td class="highlight">~266 000€ net</td>
+                            <td>—</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>Rentabilité nette</td>
+                            <td>—</td>
+                            <td>3,1%</td>
+                            <td class="highlight">5,0%</td>
+                        </tr>
+                        <tr>
+                            <td>Temps de gestion</td>
+                            <td class="highlight">Aucun</td>
+                            <td>~2h/mois</td>
+                            <td>~10h/mois (ou délégué)</td>
+                        </tr>
+                        <tr>
+                            <td>Usage personnel</td>
+                            <td>Non</td>
+                            <td>Non</td>
+                            <td class="highlight">Oui</td>
+                        </tr>
+                        <tr>
+                            <td>Flexibilité</td>
+                            <td>Définitif</td>
+                            <td>Bail 3 ans</td>
+                            <td class="highlight">Totale</td>
+                        </tr>
+                        <tr>
+                            <td>Autorisation requise</td>
+                            <td>Non</td>
+                            <td>Non</td>
+                            <td>Oui (DéclaLoc)</td>
+                        </tr>
+                        <tr>
+                            <td>Patrimoine conservé</td>
+                            <td>Non</td>
+                            <td class="highlight">Oui</td>
+                            <td class="highlight">Oui</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Situations -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-eyebrow">Cas concrets</p>
+                <h2 class="section-title">Quelle option selon votre situation ?</h2>
+            </div>
+            
+            <div class="situations-grid">
+                <div class="situation-card">
+                    <h3 class="situation-title">👴 J'ai hérité d'un bien, j'habite loin</h3>
+                    <p class="situation-text">
+                        Gérer un bien à distance est compliqué. La vente libère le capital, 
+                        ou la LCD avec conciergerie génère des revenus sans gestion directe.
+                    </p>
+                    <span class="situation-verdict sell">→ Vendre ou LCD déléguée</span>
+                </div>
+                
+                <div class="situation-card">
+                    <h3 class="situation-title">🏖️ Je veux profiter du bien en vacances</h3>
+                    <p class="situation-text">
+                        Seule la location courte durée vous permet d'utiliser le bien 
+                        quand vous voulez tout en générant des revenus le reste du temps.
+                    </p>
+                    <span class="situation-verdict bnb">→ Location courte durée</span>
+                </div>
+                
+                <div class="situation-card">
+                    <h3 class="situation-title">💤 Je veux zéro souci</h3>
+                    <p class="situation-text">
+                        La location classique avec un bon locataire ou une agence 
+                        vous assure des revenus réguliers sans effort.
+                    </p>
+                    <span class="situation-verdict rent">→ Location classique</span>
+                </div>
+                
+                <div class="situation-card">
+                    <h3 class="situation-title">💰 J'ai besoin de cash rapidement</h3>
+                    <p class="situation-text">
+                        La vente est la seule option pour récupérer le capital. 
+                        Un bien bien situé à Annecy se vend généralement en 3-6 mois.
+                    </p>
+                    <span class="situation-verdict sell">→ Vendre</span>
+                </div>
+                
+                <div class="situation-card">
+                    <h3 class="situation-title">📈 Je veux maximiser les revenus</h3>
+                    <p class="situation-text">
+                        Avec 2x plus de revenus que la location classique, 
+                        l'Airbnb est imbattable si vous êtes prêt à vous investir ou déléguer.
+                    </p>
+                    <span class="situation-verdict bnb">→ Location courte durée</span>
+                </div>
+                
+                <div class="situation-card">
+                    <h3 class="situation-title">🏗️ Le bien nécessite des travaux</h3>
+                    <p class="situation-text">
+                        Si les travaux sont importants, mieux vaut vendre en l'état 
+                        (moins cher mais sans souci) ou rénover avant de louer en LCD.
+                    </p>
+                    <span class="situation-verdict sell">→ Vendre ou rénover + LCD</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Quiz CTA -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="quiz-box">
+                <div class="quiz-icon">🎯</div>
+                <h2 class="quiz-title">Pas encore sûr ?</h2>
+                <p class="quiz-text">
+                    Myrtille peut analyser votre situation personnelle et vous recommander 
+                    la meilleure option pour votre bien.
+                </p>
+                <a href="index.html#myrtille" class="quiz-btn">
+                    Discuter avec Myrtille →
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-brand">bnb<span>·</span>annecy</p>
+            <p class="footer-text">
+                © 2026 · Un projet <a href="https://leman-digital-asset.com">Leman Digital Asset</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

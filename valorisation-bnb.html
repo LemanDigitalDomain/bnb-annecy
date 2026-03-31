@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valorisation BNB — Votre Bien Vaut Plus Grâce au Potentiel Airbnb | BNB Annecy</title>
+    <meta name="description" content="Valorisez votre bien à Annecy grâce à son potentiel de location courte durée. Estimez les revenus Airbnb pour attirer des acheteurs investisseurs.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --lac-profond: #0f2027;
+            --lac-moyen: #203a43;
+            --lac-clair: #2c5364;
+            --or-doux: #c9a227;
+            --or-clair: #f4d35e;
+            --or-pale: #fef3c7;
+            --neige: #fafbfc;
+            --brume: #f1f5f9;
+            --texte: #0f172a;
+            --texte-doux: #475569;
+            --texte-muted: #94a3b8;
+            --success: #22c55e;
+            --success-bg: #dcfce7;
+            
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--neige);
+            color: var(--texte);
+            line-height: 1.7;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--texte);
+            text-decoration: none;
+        }
+        
+        .nav-logo span {
+            color: var(--or-doux);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--texte-doux);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--or-doux);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            background: linear-gradient(180deg, var(--or-pale) 0%, var(--neige) 100%);
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--or-doux);
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 1px solid var(--or-doux);
+            border-radius: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero h1 em {
+            color: var(--or-doux);
+            font-style: italic;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--texte-doux);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+        
+        /* Value Prop */
+        .value-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--or-doux);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--texte-doux);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Benefits grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        @media (max-width: 800px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .benefit-card {
+            background: var(--brume);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s var(--ease-out-expo);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .benefit-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        
+        .benefit-desc {
+            font-size: 0.95rem;
+            color: var(--texte-doux);
+            line-height: 1.6;
+        }
+        
+        /* Example Section */
+        .example-section {
+            padding: 6rem 2rem;
+            background: var(--brume);
+        }
+        
+        .example-box {
+            background: linear-gradient(135deg, var(--lac-profond) 0%, var(--lac-moyen) 100%);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .example-box {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        .example-text h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .example-text p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .example-highlight {
+            display: inline-block;
+            background: rgba(201, 162, 39, 0.2);
+            border: 1px solid var(--or-doux);
+            border-radius: 0.5rem;
+            padding: 1rem 1.5rem;
+        }
+        
+        .example-highlight-label {
+            font-size: 0.8rem;
+            color: var(--or-clair);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .example-highlight-value {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--or-clair);
+        }
+        
+        .example-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+        
+        .example-card-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--or-clair);
+            margin-bottom: 1.5rem;
+        }
+        
+        .example-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        .example-row:last-child {
+            border-bottom: none;
+        }
+        
+        .example-row-label {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .example-row-value {
+            font-weight: 600;
+        }
+        
+        /* Process Section */
+        .process-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 800px) {
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .process-step::after {
+            content: '→';
+            position: absolute;
+            right: -1.5rem;
+            top: 1.5rem;
+            color: var(--or-doux);
+            font-size: 1.5rem;
+        }
+        
+        .process-step:last-child::after {
+            display: none;
+        }
+        
+        @media (max-width: 800px) {
+            .process-step::after {
+                display: none;
+            }
+        }
+        
+        .process-number {
+            width: 56px;
+            height: 56px;
+            background: var(--or-pale);
+            color: var(--or-doux);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 auto 1rem;
+        }
+        
+        .process-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .process-desc {
+            font-size: 0.9rem;
+            color: var(--texte-doux);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--lac-profond) 0%, var(--lac-moyen) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-content p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+        
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--or-doux);
+            color: var(--lac-profond);
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s var(--ease-out-expo);
+        }
+        
+        .cta-btn:hover {
+            background: var(--or-clair);
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--lac-profond);
+            color: var(--neige);
+            padding: 3rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-brand span {
+            color: var(--or-doux);
+        }
+        
+        .footer-text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .footer-text a {
+            color: var(--or-doux);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">bnb<span>·</span>annecy</a>
+        <ul class="nav-links">
+            <li><a href="reglementation-2026.html">Réglementation</a></li>
+            <li><a href="rentabilite-airbnb-annecy.html">Rentabilité</a></li>
+            <li><a href="fiscalite-lmnp-annecy.html">Fiscalité</a></li>
+            <li><a href="radar-biens.html">Radar Biens</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">🔑 Pour les vendeurs</span>
+            
+            <h1>Votre bien vaut plus grâce à son potentiel <em>Airbnb</em></h1>
+            
+            <p class="hero-subtitle">
+                À Annecy, un bien avec un bon potentiel de location courte durée 
+                attire les investisseurs et peut se vendre plus vite et mieux.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Value Section -->
+    <section class="value-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-eyebrow">Pourquoi ça compte</p>
+                <h2 class="section-title">Le potentiel BNB, un argument de vente</h2>
+                <p class="section-subtitle">
+                    Les investisseurs cherchent des biens avec un potentiel de revenus locatifs. 
+                    Montrez-leur les chiffres.
+                </p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3 class="benefit-title">Attirez les investisseurs</h3>
+                    <p class="benefit-desc">
+                        De plus en plus d'acheteurs recherchent des biens pour les louer en courte durée. 
+                        Positionnez votre bien sur ce segment.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3 class="benefit-title">Justifiez votre prix</h3>
+                    <p class="benefit-desc">
+                        Un bien qui génère 24 000€/an de revenus potentiels vaut plus 
+                        qu'un bien équivalent sans ce potentiel.
+                    </p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3 class="benefit-title">Vendez plus vite</h3>
+                    <p class="benefit-desc">
+                        En ciblant les investisseurs avec des données concrètes, 
+                        vous élargissez votre pool d'acheteurs potentiels.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Example Section -->
+    <section class="example-section">
+        <div class="container">
+            <div class="example-box">
+                <div class="example-text">
+                    <h2>Exemple : un T2 en Zone B</h2>
+                    <p>
+                        Votre bien est situé près du lac, dans une zone où la location courte durée 
+                        est autorisée (quota Zone B). Voici ce que vous pouvez mettre en avant :
+                    </p>
+                    <div class="example-highlight">
+                        <div class="example-highlight-label">Revenus potentiels</div>
+                        <div class="example-highlight-value">~24 000€/an</div>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <h4 class="example-card-title">Fiche valorisation</h4>
+                    <div class="example-row">
+                        <span class="example-row-label">Type de bien</span>
+                        <span class="example-row-value">T2 · 45m²</span>
+                    </div>
+                    <div class="example-row">
+                        <span class="example-row-label">Zone</span>
+                        <span class="example-row-value">Zone B (lac)</span>
+                    </div>
+                    <div class="example-row">
+                        <span class="example-row-label">Taux occupation estimé</span>
+                        <span class="example-row-value">63%</span>
+                    </div>
+                    <div class="example-row">
+                        <span class="example-row-label">Prix nuitée moyen</span>
+                        <span class="example-row-value">110€</span>
+                    </div>
+                    <div class="example-row">
+                        <span class="example-row-label">Revenus bruts/an</span>
+                        <span class="example-row-value">~25 300€</span>
+                    </div>
+                    <div class="example-row">
+                        <span class="example-row-label">Rentabilité brute</span>
+                        <span class="example-row-value">9% sur 280k€</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-eyebrow">Comment ça marche</p>
+                <h2 class="section-title">Obtenez votre estimation gratuite</h2>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h3 class="process-title">Décrivez votre bien</h3>
+                    <p class="process-desc">Localisation, surface, équipements</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h3 class="process-title">Analyse automatique</h3>
+                    <p class="process-desc">Croisement avec les données du marché</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h3 class="process-title">Estimation revenus</h3>
+                    <p class="process-desc">Projection de revenus annuels</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <h3 class="process-title">Fiche PDF</h3>
+                    <p class="process-desc">Document à joindre à votre annonce</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Prêt à valoriser votre bien ?</h2>
+            <p>
+                Myrtille peut analyser le potentiel de votre bien 
+                et vous fournir une estimation personnalisée.
+            </p>
+            <a href="index.html#myrtille" class="cta-btn">
+                Estimer mon bien →
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-brand">bnb<span>·</span>annecy</p>
+            <p class="footer-text">
+                © 2026 · Un projet <a href="https://leman-digital-asset.com">Leman Digital Asset</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
