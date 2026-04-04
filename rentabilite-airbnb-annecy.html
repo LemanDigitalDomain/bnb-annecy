@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rentabilité Airbnb Annecy 2026 — Revenus, Occupation, Calcul | BNB Annecy</title>
-    <meta name="description" content="Rentabilité location courte durée Annecy : 63% d'occupation, 1 992€/mois en moyenne, 90% en haute saison. Données AirDNA 2025 + exemple calcul T2.">
+    <title>Rentabilité Airbnb Annecy 2026 — Prix DVF, Revenus, Calcul | BNB Annecy</title>
+    <meta name="description" content="Rentabilité location courte durée Annecy : 9 047 ventes analysées (DVF), prix m² 5 283€, 63% d'occupation, 7-10% rendement. Données officielles + calcul T2.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -770,6 +770,412 @@
             color: var(--or-doux);
             text-decoration: none;
         }
+        
+        /* ============================================
+           SECTION DVF — PRIX IMMOBILIER RÉEL
+           ============================================ */
+        
+        /* DVF Hero Banner */
+        .dvf-hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dvf-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(201, 162, 39, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .dvf-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--or-clair);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .dvf-hero-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        
+        .dvf-hero-subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+        }
+        
+        .dvf-hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        @media (max-width: 600px) {
+            .dvf-hero-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .dvf-hero-stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, background 0.3s;
+        }
+        
+        .dvf-hero-stat:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .dvf-hero-stat-value {
+            font-family: var(--font-display);
+            font-size: 2.25rem;
+            font-weight: 600;
+            color: var(--or-clair);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .dvf-hero-stat-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .dvf-hero-stat-detail {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 0.25rem;
+        }
+        
+        /* DVF Evolution Chart */
+        .dvf-evolution {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .dvf-evolution-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .dvf-evolution-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--texte);
+        }
+        
+        .dvf-evolution-title span {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--texte-muted);
+            margin-top: 0.25rem;
+        }
+        
+        .dvf-trend {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--success-bg);
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #15803d;
+        }
+        
+        .dvf-trend.down {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+        
+        /* Chart Bars */
+        .dvf-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 200px;
+            padding: 0 1rem;
+            gap: 0.5rem;
+        }
+        
+        .dvf-chart-bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .dvf-chart-bar-inner {
+            width: 100%;
+            max-width: 80px;
+            border-radius: 0.5rem 0.5rem 0 0;
+            position: relative;
+            transition: all 0.5s var(--ease-out-expo);
+            cursor: pointer;
+        }
+        
+        .dvf-chart-bar-inner:hover {
+            filter: brightness(1.1);
+            transform: scaleY(1.02);
+            transform-origin: bottom;
+        }
+        
+        .dvf-chart-bar-inner::after {
+            content: attr(data-value);
+            position: absolute;
+            top: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--texte);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .dvf-chart-bar-inner:hover::after {
+            opacity: 1;
+        }
+        
+        .dvf-chart-bar-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--texte-doux);
+        }
+        
+        .dvf-chart-bar-change {
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.5rem;
+            border-radius: 1rem;
+        }
+        
+        .dvf-chart-bar-change.up {
+            background: var(--success-bg);
+            color: #15803d;
+        }
+        
+        .dvf-chart-bar-change.down {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+        
+        /* DVF Type Grid */
+        .dvf-types {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .dvf-types {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .dvf-type-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dvf-type-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dvf-type-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lac-moyen), var(--lac-clair));
+        }
+        
+        .dvf-type-card.highlight::before {
+            background: linear-gradient(90deg, var(--or-doux), var(--or-clair));
+        }
+        
+        .dvf-type-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem;
+            background: var(--brume);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .dvf-type-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--texte);
+            margin-bottom: 0.75rem;
+        }
+        
+        .dvf-type-price {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--lac-moyen);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+        
+        .dvf-type-price span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--texte-muted);
+        }
+        
+        .dvf-type-range {
+            font-size: 0.75rem;
+            color: var(--texte-muted);
+            margin-top: 0.5rem;
+        }
+        
+        .dvf-type-sales {
+            font-size: 0.7rem;
+            color: var(--texte-muted);
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--brume);
+        }
+        
+        /* DVF Insight Box */
+        .dvf-insight {
+            background: linear-gradient(135deg, var(--or-pale) 0%, #fef9e7 100%);
+            border-radius: 1rem;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--or-doux);
+        }
+        
+        .dvf-insight-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--texte);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .dvf-insight p {
+            font-size: 0.95rem;
+            color: var(--texte-doux);
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+        
+        /* DVF Source */
+        .dvf-source {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: var(--brume);
+            border-radius: 0.75rem;
+            margin: 2rem 0;
+            font-size: 0.85rem;
+        }
+        
+        .dvf-source-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .dvf-source-text {
+            flex: 1;
+        }
+        
+        .dvf-source-text strong {
+            color: var(--texte);
+        }
+        
+        .dvf-source-text span {
+            color: var(--texte-muted);
+            display: block;
+            font-size: 0.8rem;
+        }
+        
+        /* Animation keyframes */
+        @keyframes dvf-bar-grow {
+            from {
+                transform: scaleY(0);
+            }
+            to {
+                transform: scaleY(1);
+            }
+        }
+        
+        .dvf-chart-bar-inner {
+            animation: dvf-bar-grow 1s var(--ease-out-expo) forwards;
+            transform-origin: bottom;
+        }
+        
+        .dvf-chart-bar:nth-child(1) .dvf-chart-bar-inner { animation-delay: 0.1s; }
+        .dvf-chart-bar:nth-child(2) .dvf-chart-bar-inner { animation-delay: 0.2s; }
+        .dvf-chart-bar:nth-child(3) .dvf-chart-bar-inner { animation-delay: 0.3s; }
+        .dvf-chart-bar:nth-child(4) .dvf-chart-bar-inner { animation-delay: 0.4s; }
+        .dvf-chart-bar:nth-child(5) .dvf-chart-bar-inner { animation-delay: 0.5s; }
     </style>
 </head>
 <body>
@@ -881,6 +1287,146 @@
                     Sources : <a href="https://www.airdna.co" target="_blank" rel="noopener">AirDNA</a>, 
                     Rapport Deloitte-Airbnb 2024, Grand Annecy
                 </p>
+            </section>
+            
+            <!-- Section DVF — Prix Immobilier Réel -->
+            <section class="content-section" id="prix-immobilier">
+                <h2>Prix immobilier réel à Annecy</h2>
+                
+                <p>
+                    Avant de calculer un rendement, il faut connaître le prix d'achat réel. 
+                    Nous avons analysé <strong>9 047 ventes d'appartements</strong> à Annecy sur les 5 dernières années 
+                    grâce aux données officielles DVF (Demandes de Valeurs Foncières).
+                </p>
+                
+                <!-- DVF Hero Banner -->
+                <div class="dvf-hero">
+                    <span class="dvf-hero-badge">🏛️ Données officielles DVF</span>
+                    <h3 class="dvf-hero-title">9 047 ventes analysées</h3>
+                    <p class="dvf-hero-subtitle">Transactions réelles 2020-2024 sur la commune d'Annecy</p>
+                    
+                    <div class="dvf-hero-stats">
+                        <div class="dvf-hero-stat">
+                            <div class="dvf-hero-stat-value">5 283€</div>
+                            <div class="dvf-hero-stat-label">Prix moyen au m²</div>
+                            <div class="dvf-hero-stat-detail">Toutes typologies</div>
+                        </div>
+                        <div class="dvf-hero-stat">
+                            <div class="dvf-hero-stat-value">5 067€</div>
+                            <div class="dvf-hero-stat-label">Prix médian au m²</div>
+                            <div class="dvf-hero-stat-detail">50% au-dessus, 50% en-dessous</div>
+                        </div>
+                        <div class="dvf-hero-stat">
+                            <div class="dvf-hero-stat-value">+8%</div>
+                            <div class="dvf-hero-stat-label">Évolution 2020→2024</div>
+                            <div class="dvf-hero-stat-detail">De 4 926€ à 5 318€/m²</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Evolution Chart -->
+                <div class="dvf-evolution">
+                    <div class="dvf-evolution-header">
+                        <div class="dvf-evolution-title">
+                            Évolution du prix au m²
+                            <span>Prix moyen des appartements vendus à Annecy</span>
+                        </div>
+                        <div class="dvf-trend down">
+                            <span>↓</span> -3,2% en 2024
+                        </div>
+                    </div>
+                    
+                    <div class="dvf-chart">
+                        <div class="dvf-chart-bar">
+                            <div class="dvf-chart-bar-inner" style="height: 140px; background: linear-gradient(180deg, #64748b 0%, #475569 100%);" data-value="4 926€"></div>
+                            <span class="dvf-chart-bar-label">2020</span>
+                            <span class="dvf-chart-bar-change" style="background: #e2e8f0; color: #64748b;">base</span>
+                        </div>
+                        <div class="dvf-chart-bar">
+                            <div class="dvf-chart-bar-inner" style="height: 155px; background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);" data-value="5 180€"></div>
+                            <span class="dvf-chart-bar-label">2021</span>
+                            <span class="dvf-chart-bar-change up">+5,2%</span>
+                        </div>
+                        <div class="dvf-chart-bar">
+                            <div class="dvf-chart-bar-inner" style="height: 172px; background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);" data-value="5 400€"></div>
+                            <span class="dvf-chart-bar-label">2022</span>
+                            <span class="dvf-chart-bar-change up">+4,2%</span>
+                        </div>
+                        <div class="dvf-chart-bar">
+                            <div class="dvf-chart-bar-inner" style="height: 180px; background: linear-gradient(180deg, var(--or-doux) 0%, #b8860b 100%);" data-value="5 493€"></div>
+                            <span class="dvf-chart-bar-label">2023</span>
+                            <span class="dvf-chart-bar-change up">+1,7%</span>
+                        </div>
+                        <div class="dvf-chart-bar">
+                            <div class="dvf-chart-bar-inner" style="height: 168px; background: linear-gradient(180deg, #f97316 0%, #ea580c 100%);" data-value="5 318€"></div>
+                            <span class="dvf-chart-bar-label">2024</span>
+                            <span class="dvf-chart-bar-change down">-3,2%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Prix par type de bien</h3>
+                
+                <p>
+                    Le prix au m² varie fortement selon la typologie. Les petites surfaces (T1) 
+                    sont les plus chères au m², tandis que les grands appartements offrent un meilleur 
+                    ratio — mais un ticket d'entrée plus élevé.
+                </p>
+                
+                <!-- Type Cards -->
+                <div class="dvf-types">
+                    <div class="dvf-type-card">
+                        <div class="dvf-type-icon">🏠</div>
+                        <div class="dvf-type-name">Studio / T1</div>
+                        <div class="dvf-type-price">6 039€ <span>/m²</span></div>
+                        <div class="dvf-type-range">Min 1 235€ · Max 14 816€</div>
+                        <div class="dvf-type-sales">1 104 ventes</div>
+                    </div>
+                    
+                    <div class="dvf-type-card highlight">
+                        <div class="dvf-type-icon">🌟</div>
+                        <div class="dvf-type-name">T2</div>
+                        <div class="dvf-type-price">5 426€ <span>/m²</span></div>
+                        <div class="dvf-type-range">Min 1 044€ · Max 14 925€</div>
+                        <div class="dvf-type-sales">2 238 ventes</div>
+                    </div>
+                    
+                    <div class="dvf-type-card highlight">
+                        <div class="dvf-type-icon">⭐</div>
+                        <div class="dvf-type-name">T3</div>
+                        <div class="dvf-type-price">5 193€ <span>/m²</span></div>
+                        <div class="dvf-type-range">Min 1 007€ · Max 14 855€</div>
+                        <div class="dvf-type-sales">3 041 ventes</div>
+                    </div>
+                    
+                    <div class="dvf-type-card">
+                        <div class="dvf-type-icon">🏡</div>
+                        <div class="dvf-type-name">T4+</div>
+                        <div class="dvf-type-price">4 950€ <span>/m²</span></div>
+                        <div class="dvf-type-range">Min 1 035€ · Max 14 567€</div>
+                        <div class="dvf-type-sales">2 664 ventes</div>
+                    </div>
+                </div>
+                
+                <!-- Insight Box -->
+                <div class="dvf-insight">
+                    <h4 class="dvf-insight-title">💡 Ce que ça signifie pour un investisseur BNB</h4>
+                    <p>
+                        Les <strong>T2 et T3</strong> représentent le sweet spot pour l'investissement locatif courte durée à Annecy : 
+                        ils offrent un bon compromis entre ticket d'entrée (200-350k€), prix au m² raisonnable, 
+                        et capacité d'accueil suffisante pour des familles ou groupes (jusqu'à 6 personnes). 
+                        Le léger recul des prix en 2024 (-3,2%) peut représenter une fenêtre d'opportunité pour les acheteurs.
+                    </p>
+                </div>
+                
+                <!-- Source -->
+                <div class="dvf-source">
+                    <div class="dvf-source-icon">🏛️</div>
+                    <div class="dvf-source-text">
+                        <strong>Source : DVF (Demandes de Valeurs Foncières)</strong>
+                        <span>Données publiques data.gouv.fr · Mise à jour avril 2026 · 9 047 transactions analysées</span>
+                    </div>
+                </div>
             </section>
             
             <!-- Section 2 -->
@@ -1181,6 +1727,7 @@
                 <h4 class="toc-title">Sommaire</h4>
                 <ul class="toc-list">
                     <li><a href="#marche">Le marché Annecy</a></li>
+                    <li><a href="#prix-immobilier">Prix immobilier DVF</a></li>
                     <li><a href="#occupation">Taux d'occupation</a></li>
                     <li><a href="#exemple">Exemple T2</a></li>
                     <li><a href="#comparatif">LCD vs classique</a></li>
@@ -1196,7 +1743,7 @@
             <p class="footer-brand">bnb<span>·</span>annecy</p>
             <p class="footer-text">
                 © 2026 · Un projet <a href="https://leman-digital-asset.com">Leman Digital Asset</a><br>
-                Sources : AirDNA, Homerez, Moncercleimmo, Deloitte
+                Sources : DVF data.gouv.fr, AirDNA, Homerez, Moncercleimmo
             </p>
         </div>
     </footer>
